@@ -169,7 +169,7 @@ public class WPostIt extends Window implements EventListener<Event>{
 		}		
 
 		tabbox.addEventListener(Events.ON_SELECT, this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 
 	/**

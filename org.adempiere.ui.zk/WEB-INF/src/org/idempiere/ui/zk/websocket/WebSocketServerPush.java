@@ -335,7 +335,7 @@ public class WebSocketServerPush implements ServerPush {
         }
         startServerPushAtClient(desktop);
 
-		ExecutionInit cookieHandler = (Execution exec, Execution parent) -> {
+		ExecutionInit cookieHandler = (Execution exec, Execution _) -> {
 			var responseObject = exec.getNativeResponse();
 			if (responseObject instanceof HttpServletResponse servletResponse) {
 				var session = desktop.getSession();

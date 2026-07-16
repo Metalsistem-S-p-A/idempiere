@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zk>
-<borderlayout id="layout" sclass="login-window">
+<borderlayout id="layout" sclass="login-window" style="background-image: var(--url); background-size: cover; background-position: center center; background-repeat: no-repeat;">
 	<center border="none" autoscroll="true" style="background-color: transparent;">
 		<vlayout use="org.adempiere.webui.component.FlexVlayout" 
 			pack="center" align="center" hflex="1" vflex="1">
@@ -11,7 +11,6 @@
 		<include src="~./theme/iceblue_c/zul/login/login-right.zul"/>
 	</east>
 	<west sclass="login-west-panel">
-		<include src="~./theme/iceblue_c/zul/login/login-left.zul"/>
 	</west>
 	<north sclass="login-north-panel">
 		<include src="~./theme/iceblue_c/zul/login/login-top.zul"/>

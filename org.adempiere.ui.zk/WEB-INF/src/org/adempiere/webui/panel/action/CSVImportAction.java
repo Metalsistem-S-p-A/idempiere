@@ -205,7 +205,7 @@ public class CSVImportAction implements EventListener<Event>
 			LayoutUtils.addSclass("dialog-footer", confirmPanel);
 			vb.appendChild(confirmPanel);
 			confirmPanel.addActionListener(this);
-			winImportFile.addEventListener(Events.ON_CANCEL, e -> onCancel());
+			winImportFile.addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		}
 
 		panel.getComponent().getParent().appendChild(winImportFile);

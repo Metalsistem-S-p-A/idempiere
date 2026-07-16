@@ -212,7 +212,7 @@ public class DateRangePicker extends Popup implements EventListener<Event>, Valu
 		dateTextBox.addEventListener(Events.ON_CHANGE, this);
 		
 		okBtn.setSclass("date-picker-component");
-		okBtn.addEventListener(Events.ON_CLICK, event -> {
+		okBtn.addEventListener(Events.ON_CLICK, _ -> {
 			setDateTextBoxAndDisplayValue();
 			if(dateFrom != null && dateTo != null && dateTo.before(dateFrom))
 				throw new WrongValueException(dateTextBox, Msg.getMsg(Env.getCtx(), "EndDateAfterStartDate"));

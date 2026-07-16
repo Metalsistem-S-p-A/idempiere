@@ -3,10 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere 2Pack Handlers
 Bundle-SymbolicName: org.adempiere.pipo.handlers;singleton:=true
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Require-Bundle: org.adempiere.pipo;bundle-version="13.0.0",
  org.adempiere.base;bundle-version="13.0.0"
 Bundle-ClassPath: .
 Automatic-Module-Name: org.adempiere.pipo.handlers
 Bundle-Vendor: iDempiere Community
+Bundle-RequiredExecutionEnvironment: JavaSE-25

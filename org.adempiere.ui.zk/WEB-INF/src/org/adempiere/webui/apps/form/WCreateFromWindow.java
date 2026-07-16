@@ -144,7 +144,7 @@ public class WCreateFromWindow extends Window implements EventListener<Event>, W
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});

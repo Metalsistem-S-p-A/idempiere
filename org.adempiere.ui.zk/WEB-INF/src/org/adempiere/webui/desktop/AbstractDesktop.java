@@ -187,7 +187,7 @@ public abstract class AbstractDesktop extends AbstractUIPart implements IDesktop
 				preference.saveEx();
 			}
 		};
-		Executions.schedule(getComponent().getDesktop(), e -> {
+		Executions.schedule(getComponent().getDesktop(), _ -> {
 			runnable.run();
 		}, new Event("onUpdateRecentMenuItem"));
 	}

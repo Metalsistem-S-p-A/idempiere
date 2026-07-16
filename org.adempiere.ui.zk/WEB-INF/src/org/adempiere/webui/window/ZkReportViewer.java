@@ -286,7 +286,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, IRep
 		m_isCanExport = MRole.getDefault().isCanExport(m_AD_Table_ID);
 
 		addEventListener(ON_RENDER_REPORT_EVENT, this);
-		addEventListener("onPostInit", e -> {
+		addEventListener("onPostInit", _ -> {
 			postRenderReportEvent();
 		});
 		
@@ -660,7 +660,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, IRep
 
 			toolBar.appendChild(more);
 			LayoutUtils.addSclass("space-between-content", toolBar);
-			more.addEventListener(Events.ON_CLICK, evt -> {
+			more.addEventListener(Events.ON_CLICK, _ -> {
 				toolbarPopup.open(more, "before_end");
 			});
 		}
@@ -814,7 +814,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, IRep
 		while (parent != null) {
 			if (parent instanceof Tabpanel) {
 				Tabpanel parentTabPanel = (Tabpanel) parent;
-				parentTabPanel.setOnCloseHandler(t -> {
+				parentTabPanel.setOnCloseHandler(_ -> {
 				});
 				break;
 			}
@@ -1903,7 +1903,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, IRep
 	}
 
 	private void clearTabOnCloseHandler() {
-		Executions.schedule(getDesktop(), e -> {
+		Executions.schedule(getDesktop(), _ -> {
 			Component parent = this.getParent();
 			while (parent != null) {
 				if (parent instanceof Tabpanel) {

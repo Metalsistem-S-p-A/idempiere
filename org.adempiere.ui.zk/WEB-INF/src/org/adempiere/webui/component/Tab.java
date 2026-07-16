@@ -232,7 +232,7 @@ public class Tab extends org.zkoss.zul.Tab
 		boolean attached = getDesktop() != null;
 		if (panel != null) {
 			if (attached)
-				Executions.schedule(getDesktop(), e -> panel.detach(), new Event("onCloseLinkedPanel"));
+				Executions.schedule(getDesktop(), _ -> panel.detach(), new Event("onCloseLinkedPanel"));
 		}
 		
 		detach();

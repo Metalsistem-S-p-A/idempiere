@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere Web Client
 Bundle-SymbolicName: org.adempiere.ui.zk;singleton:=true
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Import-Package: com.google.common.annotations;version="33.2.1",
  com.google.common.base;version="33.2.1",
  com.google.common.cache;version="33.2.1",
@@ -89,7 +88,8 @@ Import-Package: com.google.common.annotations;version="33.2.1",
  org.slf4j.spi;version="1.7.2",
  org.springframework.web.util
 DynamicImport-Package: action.images
-Bundle-ClassPath: .,
+Bundle-ClassPath: idIta.modification.org.adempiere.ui.zk.jar,
+ .,
  lib/ckez.jar,
  lib/daisydiff.jar,
  lib/owasp-java-html-sanitizer.jar,
@@ -242,3 +242,4 @@ Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.adempiere.ui.zk
 Bundle-Vendor: iDempiere Community
 Eclipse-BundleShape: dir
+Bundle-RequiredExecutionEnvironment: JavaSE-25

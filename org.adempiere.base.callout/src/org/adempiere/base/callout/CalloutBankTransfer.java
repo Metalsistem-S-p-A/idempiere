@@ -58,27 +58,27 @@ public class CalloutBankTransfer implements IColumnCallout {
 	
 	static {
 		calloutMap.put(MBankTransfer.COLUMNNAME_From_C_BankAccount_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> fromBankAccount(ctx, windowNo, mTab, mField, value));
+				(ctx, windowNo, mTab, mField, value, _) -> fromBankAccount(ctx, windowNo, mTab, mField, value));
 		calloutMap.put(MBankTransfer.COLUMNNAME_To_C_BankAccount_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> toBankAccount(ctx, windowNo, mTab, mField, value));
+				(ctx, windowNo, mTab, mField, value, _) -> toBankAccount(ctx, windowNo, mTab, mField, value));
 		calloutMap.put(MBankTransfer.COLUMNNAME_From_Amt, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> fromAmt(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> fromAmt(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_PayDate, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> payDate(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> payDate(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_From_C_Charge_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> fromCharge(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> fromCharge(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_From_TenderType, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> fromTenderType(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> fromTenderType(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_From_C_Currency_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> fromCurrency(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> fromCurrency(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_To_C_Currency_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> toCurrency(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> toCurrency(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_Rate, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> rate(ctx, windowNo, mTab, mField, value));
+				(ctx, windowNo, mTab, mField, value, _) -> rate(ctx, windowNo, mTab, mField, value));
 		calloutMap.put(MBankTransfer.COLUMNNAME_C_ConversionType_ID, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> conversionType(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> conversionType(ctx, windowNo, mTab, mField));
 		calloutMap.put(MBankTransfer.COLUMNNAME_To_Amt, 
-				(ctx, windowNo, mTab, mField, value, oldValue) -> toAmt(ctx, windowNo, mTab, mField));
+				(ctx, windowNo, mTab, mField, _, _) -> toAmt(ctx, windowNo, mTab, mField));
 	}
 	
 	@Override

@@ -229,7 +229,7 @@ public class LoginWindow extends Window implements EventListener<Event>
 			isChangeRoleRequest.set((boolean) getDesktop().getSession().getAttribute(SSOUtils.ISCHANGEROLE_REQUEST));
 		if (isSSOLogin)
 		{
-			Executions.schedule(getDesktop(), e -> validateMFPanel(userName, showRolePanel, clientsKNPairs, isClientDefined, isChangeRoleRequest.get()), new Event(SSOUtils.EVENT_ON_AFTER_SSOLOGIN));
+			Executions.schedule(getDesktop(), _ -> validateMFPanel(userName, showRolePanel, clientsKNPairs, isClientDefined, isChangeRoleRequest.get()), new Event(SSOUtils.EVENT_ON_AFTER_SSOLOGIN));
 		}
 		else
 		{

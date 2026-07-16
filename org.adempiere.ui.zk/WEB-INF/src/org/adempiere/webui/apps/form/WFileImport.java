@@ -606,7 +606,7 @@ public class WFileImport extends ADForm implements EventListener<Event>
 
 		final int importedFinal = imported;
 		Dialog.info(m_WindowNo, "FileImportR/I", row + " / " + imported + "#", Msg.getMsg(Env.getCtx(), "FileImport"),
-			    result -> {
+			    _ -> {
 			        if (importedFinal > 0) {
 			            MQuery query = new MQuery(m_format.getAD_Table_ID());
 			            query.addRestriction(new SQLFragment("I_IsImported=?", List.of("N")));

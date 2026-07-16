@@ -138,7 +138,7 @@ public class WMediaDialog extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback("afterPageAttached", t -> afterPageAttached());
+			addCallback("afterPageAttached", _ -> afterPageAttached());
 		}
 		this.setSclass("media-dialog");
 		this.setClosable(true);
@@ -215,7 +215,7 @@ public class WMediaDialog extends Window implements EventListener<Event>
 		confirmPanel.appendChild(bOk);
 		confirmPanel.appendChild(bCancel);
 		confirmPanel.setStyle("float: right;");
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 	
 	private void  afterPageAttached() {

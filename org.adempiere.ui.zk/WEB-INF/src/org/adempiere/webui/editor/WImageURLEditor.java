@@ -103,7 +103,7 @@ public class WImageURLEditor extends WEditor
 				}
 			}        	
         }, gridField, tableEditor, editorConfiguration);
-        getComponent().addCallback(AbstractComponent.AFTER_PAGE_ATTACHED, t -> {
+        getComponent().addCallback(AbstractComponent.AFTER_PAGE_ATTACHED, _ -> {
         	if (contextPath == null && Executions.getCurrent() != null)
 	        	contextPath = Executions.getCurrent().getContextPath();
         });

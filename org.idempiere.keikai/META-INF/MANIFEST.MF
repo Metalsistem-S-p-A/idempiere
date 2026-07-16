@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: zk keikai
 Bundle-SymbolicName: org.idempiere.keikai
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Bundle-ClassPath: .,
  lib/keikai-oss.jar,
  lib/keikai-model-oss.jar,
@@ -208,3 +207,4 @@ Bundle-Vendor: iDempiere Community
 Bundle-ActivationPolicy: lazy
 Fragment-Host: org.adempiere.ui.zk;bundle-version="13.0.0"
 Service-Component: OSGI-INF/org.idempiere.keikai.view.KeikaiMediaViewProvider.xml
+Bundle-RequiredExecutionEnvironment: JavaSE-25

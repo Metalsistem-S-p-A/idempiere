@@ -20,6 +20,5 @@ Require-Bundle: org.adempiere.base;bundle-version="13.0.0",
  json;bundle-version="20231013.0.0"
 Automatic-Module-Name: org.idempiere.zk.pivot
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
 Service-Component: OSGI-INF/org.idempiere.zk.pivot.PivotReportRenderer.xml,
  OSGI-INF/org.idempiere.zk.pivot.PivotReportVieweRenderer.xml

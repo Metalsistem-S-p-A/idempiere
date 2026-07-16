@@ -115,7 +115,7 @@ public class ComponentBlackListService implements ServiceListener {
 	private void disableComponent(ComponentDescriptionDTO comp) {
 		Promise<Void> disablePromise = scrService.disableComponent(comp);
 		disablePromise.then(
-            (resolved) -> {
+            (_) -> {
                 System.out.println("Component " + comp.name + " has been successfully disabled.");
                 if (!disableQueue.contains(comp)) {
 	                disableQueue.add(comp);

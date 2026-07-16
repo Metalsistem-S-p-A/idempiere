@@ -328,7 +328,7 @@ public class BreadCrumb extends Div implements EventListener<Event> {
 
 			String title = Msg.getMsg(Env.getCtx(), "Who") + m_text;
 			WRecordInfo winfo = new WRecordInfo (title, m_dse, m_gridTab);
-			winfo.addCallback(Window.AFTER_PAGE_DETACHED, t -> {
+			winfo.addCallback(Window.AFTER_PAGE_DETACHED, _ -> {
 				ADWindow adwindow = ADWindow.findADWindow(BreadCrumb.this);
 				if (adwindow != null)
 					adwindow.getADWindowContent().focusToLastFocusEditor();

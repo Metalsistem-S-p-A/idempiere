@@ -1452,7 +1452,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 			lastFocusEditor.getPage() != null && LayoutUtils.isReallyVisible(lastFocusEditor)) {
 			if (defer) {
 				final HtmlBasedComponent editor = (HtmlBasedComponent) lastFocusEditor;
-				Executions.schedule(getComponent().getDesktop(), e -> editor.focus(), new Event("onScheduleFocusToLastFocusEditor"));
+				Executions.schedule(getComponent().getDesktop(), _ -> editor.focus(), new Event("onScheduleFocusToLastFocusEditor"));
 			} else {
 				((HtmlBasedComponent)lastFocusEditor).focus();
 			}
@@ -1878,7 +1878,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
     				    && adTabbox.getSelectedDetailADTabpanel().getGridTab() != null
     				    && e.getSource().equals(adTabbox.getSelectedDetailADTabpanel().getGridTab().getTableModel()))))
     		{
-    			Executions.schedule(getComponent().getDesktop(), evt -> {
+    			Executions.schedule(getComponent().getDesktop(), _ -> {
     				this.dataStatusChanged(e);
     			}, new Event("onAsynchronousDataStatusChanged"));
     		}
@@ -2317,9 +2317,9 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
             		if (!isTabExcluded) {
             			//schedule for onClose to show confirmation dialog
             			Executions.schedule(getComponent().getDesktop(), 
-            					e1 -> {
+            					_ -> {
             						if (!showingOnExitDialog)
-                        				Executions.schedule(getComponent().getDesktop(), e2 -> asyncAutoSave(), new Event("onAsyncAutoSave"));
+                        				Executions.schedule(getComponent().getDesktop(), _ -> asyncAutoSave(), new Event("onAsyncAutoSave"));
             					},  new Event("onAutoSaveChangesSchedule"));
             		}
         		}
@@ -4238,7 +4238,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 					showBusyMask(dialog);
 					LayoutUtils.openOverlappedWindow(getComponent(), dialog, "middle_center");
 				}
-				Executions.schedule(getComponent().getDesktop(), e -> dialog.focus(), new Event("onPostShowProcessModalDialog"));
+				Executions.schedule(getComponent().getDesktop(), _ -> dialog.focus(), new Event("onPostShowProcessModalDialog"));
 			}
 			else if (callback != null)
 			{
@@ -4486,7 +4486,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 		
 		if (m_logs != null && m_logs.length > 0) {
 			ProcessInfoDialog dialog = ProcessInfoDialog.showProcessInfo(pi, curWindowNo, getComponent(), false);
-			dialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, e -> focusToActivePanel());
+			dialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, _ -> focusToActivePanel());
 		}		
 	}
 
@@ -4522,7 +4522,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 	@Override
 	public void onCustomize() {
 		ADTabpanel tabPanel = (ADTabpanel) getADTab().getSelectedTabpanel();
-		CustomizeGridViewDialog.onCustomize(tabPanel, b -> {
+		CustomizeGridViewDialog.onCustomize(tabPanel, _ -> {
 			focusToLastFocusEditor();
 		});
 	}
@@ -4593,7 +4593,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 				old.setId("");
 				if (old.getDesktop() != null) {
 					AEnv.detachInputElement(old);
-					Executions.schedule(old.getDesktop(), e -> old.detach(), new Event("onDetachOldFindWindow"));
+					Executions.schedule(old.getDesktop(), _ -> old.detach(), new Event("onDetachOldFindWindow"));
 				}
 			}
 
@@ -4632,7 +4632,7 @@ public abstract class AbstractADWindowContent extends AbstractUIPart implements 
 		tabFindWindowHashMap.keySet().removeIf(tab -> tab.getTabLevel() != 0);
 		if (!list.isEmpty()) {
 			list.forEach(e -> AEnv.detachInputElement(e));
-			Executions.schedule(getComponent().getDesktop(), e -> list.forEach(f -> f.detach()), new Event("onDetachCacheFindWindow"));
+			Executions.schedule(getComponent().getDesktop(), _ -> list.forEach(f -> f.detach()), new Event("onDetachCacheFindWindow"));
 		}
 	}
 	

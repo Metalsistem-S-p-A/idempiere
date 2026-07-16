@@ -68,7 +68,7 @@ public class WCustomizeUserDefTabGridView extends ADForm {
 		customizePanel.createUI();
 		customizePanel.loadData();
 		
-		addEventListener(Events.ON_CANCEL, e -> customizePanel.onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> customizePanel.onCancel());
 	}
 
 	@Override

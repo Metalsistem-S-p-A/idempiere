@@ -118,7 +118,7 @@ public class WQuickForm extends Window implements IQuickForm
 		prevQGV = adWinContent.getCurrQGV();
 		adWinContent.setCurrQGV(quickGridView);
 		
-		addCallback(AFTER_PAGE_DETACHED, t -> adWinContent.focusToLastFocusEditor());
+		addCallback(AFTER_PAGE_DETACHED, _ -> adWinContent.focusToLastFocusEditor());
 	}
 
 	/**

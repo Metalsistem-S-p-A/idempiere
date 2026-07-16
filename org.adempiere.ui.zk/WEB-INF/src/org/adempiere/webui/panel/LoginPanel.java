@@ -917,7 +917,7 @@ public class LoginPanel extends Window implements EventListener<Event>
 		button.setTooltip(name);
 		button.setSclass("sso-login-btn");
 		button.setStyle("display: flex; align-items: center; ");
-		button.addEventListener("onClick", event -> {
+		button.addEventListener("onClick", _ -> {
 
 			String referrerUrl = null;
 			if (Executions.getCurrent().getNativeRequest() != null && Executions.getCurrent().getNativeRequest() instanceof HttpServletRequest request)

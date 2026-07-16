@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.apache.ecs
 Bundle-Version: 13.0.0.qualifier
 Bundle-Activator: org.apache.ecs.Activator
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Import-Package: org.osgi.framework;version="1.10.0"
 Export-Package: org.apache.ecs;uses:="org.apache.ecs.xhtml",
  org.apache.ecs.filter;uses:="org.apache.ecs",
@@ -16,3 +15,4 @@ Export-Package: org.apache.ecs;uses:="org.apache.ecs.xhtml",
 Bundle-ClassPath: .
 Automatic-Module-Name: org.apache.ecs
 Bundle-Vendor: iDempiere Community
+Bundle-RequiredExecutionEnvironment: JavaSE-25

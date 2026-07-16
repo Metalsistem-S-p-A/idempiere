@@ -99,7 +99,7 @@ public class Chosenbox<T> extends HtmlBasedComponent {
 	}
 	
 	public Chosenbox() {
-		addEventListener("onOkTimer", e -> {
+		addEventListener("onOkTimer", _ -> {
 			onOkTimer();
 		});
 	}
@@ -816,7 +816,7 @@ public class Chosenbox<T> extends HtmlBasedComponent {
 				StringBuilder script = new StringBuilder();
 				script.append("(function(){let w=zk.Widget.$('#").append(getUuid()).append("');");
 				script.append("w.$n('inp').focus();})()");
-				Executions.schedule(getDesktop(), e -> {setOpen(true);Clients.evalJavaScript(script.toString());}, new Event("onPostSelect"));
+				Executions.schedule(getDesktop(), _ -> {setOpen(true);Clients.evalJavaScript(script.toString());}, new Event("onPostSelect"));
 			}
 			_onSelectTimestamp = System.currentTimeMillis();
 		} else if (cmd.equals(Events.ON_OPEN)) {

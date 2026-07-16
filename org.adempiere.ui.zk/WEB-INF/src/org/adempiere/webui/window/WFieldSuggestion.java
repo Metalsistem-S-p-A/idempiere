@@ -133,7 +133,7 @@ public class WFieldSuggestion extends Window implements EventListener<Event> {
 		this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 		this.setSizable(true);
 		this.setMaximizable(true);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 
 	@Override

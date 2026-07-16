@@ -197,7 +197,7 @@ public class TreeSearchPanel extends Panel implements EventListener<Event>, Tree
 	        moveItemBtn.setSclass("tree-moveitem-btn");
 	        moveItemBtn.setIconSclass("z-icon-arrows-alt");
 	        layout.appendChild(moveItemBtn);
-	        moveItemBtn.addEventListener(Events.ON_CLICK, evt -> onMoveBtnClicked());
+	        moveItemBtn.addEventListener(Events.ON_CLICK, _ -> onMoveBtnClicked());
 	        tree.addEventListener("onPostMove", evt -> onPostMove(evt));
         }
         this.appendChild(layout);
@@ -275,7 +275,7 @@ public class TreeSearchPanel extends Panel implements EventListener<Event>, Tree
 		btn.setIconSclass(Icon.getIconSclass(Icon.REMOVE));
 		moveItemBox.appendChild(btn);
 		moveItemBox.setAttribute("draggedComponent", tr);
-		btn.addEventListener(Events.ON_CLICK, e -> {
+		btn.addEventListener(Events.ON_CLICK, _ -> {
 			moveItemBox.detach();
 			moveItemBox = null;
 			moveItemBtn.setSclass("tree-moveitem-btn");

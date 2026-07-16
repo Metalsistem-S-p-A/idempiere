@@ -191,7 +191,7 @@ public class InvoiceHistory extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 				this.invalidate();

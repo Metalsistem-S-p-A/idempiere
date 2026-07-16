@@ -100,7 +100,7 @@ public class GlobalSearch extends Div implements EventListener<Event> {
 		bandbox.addEventListener(Events.ON_CHANGE, this);
 		bandbox.setCtrlKeys("#up#down");
 		bandbox.addEventListener(Events.ON_CTRL_KEY, this);
-		bandbox.addEventListener(Events.ON_FOCUS, e -> {
+		bandbox.addEventListener(Events.ON_FOCUS, _ -> {
 			bandbox.setOpen(true);
 			if (tabbox.getSelectedIndex() == 0)
 				menuController.updateRecentItems();

@@ -256,7 +256,7 @@ public class InfoSchedule extends Window implements EventListener<Event>
 		
 		fieldResourceType.setMold("select");
 		fieldResource.setMold("select");
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}	//	jbInit
 
 	/**

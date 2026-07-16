@@ -101,11 +101,11 @@ public class InfoGeneralPanelTest extends AbstractTestCase {
 		when(webApp.getConfiguration()).thenReturn(mock(Configuration.class));
 		webAppsMock.when(() -> WebApps.getCurrent()).thenReturn(webApp);
 
-        executionsMock.when(() -> Executions.schedule(any(Desktop.class), any(), any())).thenAnswer(invocation -> {
+        executionsMock.when(() -> Executions.schedule(any(Desktop.class), any(), any())).thenAnswer(_ -> {
 			return null;
 		});
 
-        clientsMock.when(() -> Clients.clearBusy()).thenAnswer(invocation -> {
+        clientsMock.when(() -> Clients.clearBusy()).thenAnswer(_ -> {
 			return null;
 		});
 	}

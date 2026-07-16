@@ -1316,7 +1316,7 @@ public class GridFieldTest extends AbstractTestCase {
 		GridField gridField = new GridField(vo);
 
 		final boolean[] listenerCalled = { false };
-		PropertyChangeListener listener = evt -> listenerCalled[0] = true;
+		PropertyChangeListener listener = _ -> listenerCalled[0] = true;
 
 		// Add listener and test
 		gridField.addPropertyChangeListener(listener);

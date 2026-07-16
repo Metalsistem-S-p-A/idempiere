@@ -291,7 +291,7 @@ public class WAttachment extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -427,7 +427,7 @@ public class WAttachment extends Window implements EventListener<Event>
 			orientation = ClientInfo.get().orientation;
 			ClientInfo.onClientInfo(this, this::onClientInfo);
 		}
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 	
 	/**

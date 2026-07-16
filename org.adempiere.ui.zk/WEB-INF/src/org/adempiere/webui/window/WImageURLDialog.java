@@ -56,8 +56,8 @@ public class WImageURLDialog extends Window {
 		confirmPanel.addActionListener(e -> onConfirmPanelAction(e));
 		confirmPanel.setHflex("1");
 		confirmPanel.setVflex("min");
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
-		addEventListener(Events.ON_OK, e -> onOk());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
+		addEventListener(Events.ON_OK, _ -> onOk());
 		appendChild(layout);
 	}
 

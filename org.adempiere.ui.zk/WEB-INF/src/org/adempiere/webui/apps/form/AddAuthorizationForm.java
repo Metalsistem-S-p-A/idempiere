@@ -133,7 +133,7 @@ public class AddAuthorizationForm extends ADForm {
 		msgLabel.setHeight("150px");
 
 		msgBox = new Textbox();
-		msgBox.addEventListener(Events.ON_CHANGE, evt -> onMsgBoxChanged());
+		msgBox.addEventListener(Events.ON_CHANGE, _ -> onMsgBoxChanged());
 		msgBox.setVisible(false);
 
 		row = rows.newRow();

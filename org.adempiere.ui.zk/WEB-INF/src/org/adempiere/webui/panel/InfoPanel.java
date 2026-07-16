@@ -2761,7 +2761,7 @@ public abstract class InfoPanel extends Window implements EventListener<Event>, 
 							ProcessInfoLog[] logs = m_pi.getLogs();
 							if (logs != null && logs.length > 0) {
 								ProcessInfoDialog dialog = ProcessInfoDialog.showProcessInfo(m_pi, p_WindowNo, InfoPanel.this, false);
-								dialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, e -> InfoPanel.this.detach());
+								dialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, _ -> InfoPanel.this.detach());
 							} else {
 								detach();
 							}
@@ -3348,7 +3348,7 @@ public abstract class InfoPanel extends Window implements EventListener<Event>, 
 						AEnv.detachInputElement(c);
 					}
 				}
-			Executions.schedule(getDesktop(), e -> this.detach(), new Event("onAsyncDetach"));
+			Executions.schedule(getDesktop(), _ -> this.detach(), new Event("onAsyncDetach"));
 		}
         }
     }   //  dispose

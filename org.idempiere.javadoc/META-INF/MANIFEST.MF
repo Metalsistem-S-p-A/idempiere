@@ -5,4 +5,3 @@ Bundle-SymbolicName: org.idempiere.javadoc;singleton:=true
 Bundle-Version: 13.0.0.qualifier
 Bundle-Vendor: iDempiere Community
 Automatic-Module-Name: org.idempiere.javadoc
-Bundle-RequiredExecutionEnvironment: JavaSE-17

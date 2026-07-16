@@ -11,8 +11,8 @@
 
 	<properties>
 		<revision>13.0.0-SNAPSHOT</revision>
-		<jdk.version>17</jdk.version>
-		<tycho.version>4.0.8</tycho.version>
+		<jdk.version>25</jdk.version>
+		<tycho.version>5.0.3</tycho.version>
 		<tycho.extras.version>${tycho.version}</tycho.extras.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jp.version>6.17.0</jp.version>
@@ -24,19 +24,19 @@
 		<maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
 		<!-- default value of properties, use when run without profile -->
 		<idempiere.target>org.idempiere.p2.targetplatform</idempiere.target>
-		<idempiere-equinox-url>https://download.eclipse.org/eclipse/updates/4.29</idempiere-equinox-url>
-		<idempiere-equinox-repository-id>eclipse-2023-09</idempiere-equinox-repository-id>
-		<idempiere-orbit-url>https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/4.29.0</idempiere-orbit-url>
-		<idempiere-orbit-repository-id>orbit-2023-09</idempiere-orbit-repository-id>
+		<idempiere-equinox-url>https://download.eclipse.org/eclipse/updates/4.40</idempiere-equinox-url>
+		<idempiere-equinox-repository-id>eclipse-2026-06</idempiere-equinox-repository-id>
+		<idempiere-orbit-url>https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/4.40.0</idempiere-orbit-url>
+		<idempiere-orbit-repository-id>orbit-2026-06</idempiere-orbit-repository-id>
 		<url.file.srv>https://raw.githubusercontent.com/idempiere/binary.file/master</url.file.srv>
 		<extra.iu.install>org.eclipse.equinox.p2.director,org.idempiere.equinox.p2.director.feature.feature.group</extra.iu.install>
 		<idempiere.product.id>org.adempiere.server.product</idempiere.product.id>
 		<skipClean>false</skipClean>
     <skipDS>true</skipDS>
-    <target.version>17</target.version>
-    <maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-    <jacoco-version>0.8.10</jacoco-version>
+    <target.version>25</target.version>
+    <maven.compiler.source>25</maven.compiler.source>
+		<maven.compiler.target>25</maven.compiler.target>
+    <jacoco-version>0.8.14</jacoco-version>
 	</properties>
 	
 	<build>
@@ -72,163 +72,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>${maven-clean-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<!-- https://www.eclipse.org/m2e/documentation/m2e-execution-not-covered.html -->
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>${lifecycle.mapping.version}</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.googlecode.maven-download-plugin</groupId>
-										<artifactId>download-maven-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>wget</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-clean-plugin</artifactId>
-										<versionRange>[2.5,)</versionRange>
-										<goals>
-											<goal>clean</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-dependency-plugin
-										</artifactId>
-										<versionRange>
-											[3.1.1,)
-										</versionRange>
-										<goals>
-											<goal>copy</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											target-platform-configuration
-										</artifactId>
-										<versionRange>
-											[3.0.0,)
-										</versionRange>
-										<goals>
-											<goal>target-platform</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											tycho-compiler-plugin
-										</artifactId>
-										<versionRange>
-											[3.0.0,)
-										</versionRange>
-										<goals>
-											<goal>
-												validate-classpath
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											tycho-ds-plugin
-										</artifactId>
-										<versionRange>
-											[3.0.0,)
-										</versionRange>
-										<goals>
-											<goal>
-												declarative-services
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-antrun-plugin
-										</artifactId>
-										<versionRange>
-											[1.8,)
-										</versionRange>
-										<goals>
-											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											tycho-bnd-plugin
-										</artifactId>
-										<versionRange>
-											[4.0.7,)
-										</versionRange>
-										<goals>
-											<goal>process</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
 				</plugin>
                 <plugin>
 			        <groupId>org.eclipse.tycho</groupId>
@@ -409,23 +252,11 @@
 						        <type>eclipse-plugin</type>
 					        </dependency>
 					        <dependency>
-						        <artifactId>org.apache.commons.codec</artifactId>
-						        <type>eclipse-plugin</type>
-					        </dependency>
-					        <dependency>
 						        <artifactId>org.eclipse.osgi.services</artifactId>
 						        <type>eclipse-plugin</type>
 					        </dependency>
 					        <dependency>
 						        <artifactId>org.eclipse.ecf.filetransfer</artifactId>
-						        <type>eclipse-plugin</type>
-					        </dependency>
-					        <dependency>
-						        <artifactId>org.eclipse.ecf.provider.filetransfer.ssl</artifactId>
-						        <type>eclipse-plugin</type>
-					        </dependency>
-					        <dependency>
-						        <artifactId>org.eclipse.ecf.ssl</artifactId>
 						        <type>eclipse-plugin</type>
 					        </dependency>
 					        <dependency>
@@ -485,11 +316,6 @@
                     	<release>${target.version}</release>
 						<verbose>true</verbose>						
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>${tycho.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>com.googlecode.maven-download-plugin</groupId>
@@ -613,6 +439,180 @@
 	</build>
 
     <profiles>
+	    <profile>
+		    <!-- https://www.eclipse.org/m2e/documentation/m2e-execution-not-covered.html -->
+		    <!-- m2e sets this property; plain mvn/Tycho CLI builds never activate this profile,
+		         so lifecycle-mapping:1.0.0 (a virtual artifact m2e resolves internally) is never
+		         looked up on Maven Central. -->
+		    <id>m2e</id>
+		    <activation>
+		        <property>
+		            <name>m2e.version</name>
+		        </property>
+		    </activation>
+		    <build>
+		        <pluginManagement>
+		            <plugins>
+		                <plugin>
+		                    <groupId>org.eclipse.m2e</groupId>
+		                    <artifactId>lifecycle-mapping</artifactId>
+		                    <version>${lifecycle.mapping.version}</version>
+		                    <configuration>
+		                        <lifecycleMappingMetadata>
+		                            <pluginExecutions>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>com.googlecode.maven-download-plugin</groupId>
+		                                        <artifactId>download-maven-plugin</artifactId>
+		                                        <versionRange>[1.0.0,)</versionRange>
+		                                        <goals>
+		                                            <goal>wget</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore/>
+		                                    </action>
+		                                </pluginExecution>
+
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>org.apache.maven.plugins</groupId>
+		                                        <artifactId>maven-clean-plugin</artifactId>
+		                                        <versionRange>[2.5,)</versionRange>
+		                                        <goals>
+		                                            <goal>clean</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore/>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.apache.maven.plugins
+		                                        </groupId>
+		                                        <artifactId>
+		                                            maven-dependency-plugin
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [3.1.1,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>copy</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.eclipse.tycho
+		                                        </groupId>
+		                                        <artifactId>
+		                                            target-platform-configuration
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [3.0.0,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>target-platform</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.eclipse.tycho
+		                                        </groupId>
+		                                        <artifactId>
+		                                            tycho-compiler-plugin
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [3.0.0,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>
+		                                                validate-classpath
+		                                            </goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.eclipse.tycho
+		                                        </groupId>
+		                                        <artifactId>
+		                                            tycho-ds-plugin
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [3.0.0,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>
+		                                                declarative-services
+		                                            </goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.apache.maven.plugins
+		                                        </groupId>
+		                                        <artifactId>
+		                                            maven-antrun-plugin
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [1.8,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>run</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                                <pluginExecution>
+		                                    <pluginExecutionFilter>
+		                                        <groupId>
+		                                            org.eclipse.tycho
+		                                        </groupId>
+		                                        <artifactId>
+		                                            tycho-bnd-plugin
+		                                        </artifactId>
+		                                        <versionRange>
+		                                            [4.0.7,)
+		                                        </versionRange>
+		                                        <goals>
+		                                            <goal>process</goal>
+		                                        </goals>
+		                                    </pluginExecutionFilter>
+		                                    <action>
+		                                        <ignore></ignore>
+		                                    </action>
+		                                </pluginExecution>
+		                            </pluginExecutions>
+		                        </lifecycleMappingMetadata>
+		                    </configuration>
+		                </plugin>
+		            </plugins>
+		        </pluginManagement>
+		    </build>
+	    </profile>
 	    <profile>
 		    <id>buildIdempiere</id>
             <activation>

@@ -316,7 +316,7 @@ public class CompositeADTabbox extends AbstractADTabbox
     private void focusToTabpanel(IADTabpanel adTabPanel ) {
 		if (adTabPanel != null && adTabPanel instanceof HtmlBasedComponent) {
 			final HtmlBasedComponent comp = (HtmlBasedComponent) adTabPanel;
-			Executions.schedule(layout.getDesktop(), e -> {comp.focus();}, new Event("onFocusDefer"));
+			Executions.schedule(layout.getDesktop(), _ -> {comp.focus();}, new Event("onFocusDefer"));
 		}
 	}
     
@@ -1073,7 +1073,7 @@ public class CompositeADTabbox extends AbstractADTabbox
 		if (!tabPanel.isVisible()) {
 			tabPanel.setVisible(true);
 			if (tabPanel.getDesktop() != null) {
-				Executions.schedule(tabPanel.getDesktop(), e -> {
+				Executions.schedule(tabPanel.getDesktop(), _ -> {
 					invalidateTabPanel(tabPanel);
 				}, new Event("onPostActivateDetail", tabPanel));
 			} else {
@@ -1201,7 +1201,7 @@ public class CompositeADTabbox extends AbstractADTabbox
 					}
 					if (adtab.getGridTab().getCurrentRow() != currentRow)
 						adtab.getGridTab().setCurrentRow(currentRow, true);
-					Executions.schedule(getComponent().getDesktop(), e->((ADTabpanel)headerTab).focusToFirstEditor(), new Event("onFocusToHeaderTab"));
+					Executions.schedule(getComponent().getDesktop(), _->((ADTabpanel)headerTab).focusToFirstEditor(), new Event("onFocusToHeaderTab"));
 					break;
 				}
 			}

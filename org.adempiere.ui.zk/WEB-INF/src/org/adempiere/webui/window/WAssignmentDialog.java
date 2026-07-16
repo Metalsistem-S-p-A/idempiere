@@ -219,7 +219,7 @@ public class WAssignmentDialog extends Window implements EventListener<Event>
 		row.appendCellChild(confirmPanel, 3);
 		rows.appendChild(row);
 		
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		//
 	}	//	init
 

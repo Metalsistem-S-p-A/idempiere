@@ -176,7 +176,7 @@ public class AboutWindow extends Window implements EventListener<Event> {
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -389,7 +389,7 @@ public class AboutWindow extends Window implements EventListener<Event> {
 		text.setParent(pre);
 		
 		if (Env.getAD_Client_ID(Env.getCtx())==0 && MRole.getDefault().isAccessAdvanced()) {
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				Monitor monitor = getDesktop().getWebApp().getConfiguration().getMonitor();
 				if (monitor != null && monitor instanceof Statistic) {
 					Statistic stat = (Statistic) monitor;

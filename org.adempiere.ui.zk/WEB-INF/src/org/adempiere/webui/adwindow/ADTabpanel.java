@@ -312,7 +312,7 @@ DataStatusListener, IADTabpanel, IdSpace, IFieldEditorContainer
         //swipe listener for mobile
         if (ClientInfo.isMobile())
         {
-	        form.addEventListener(ON_SWIPE_RIGHT, e -> {
+	        form.addEventListener(ON_SWIPE_RIGHT, _ -> {
 	        	if (windowPanel != null && windowPanel.getBreadCrumb() != null && windowPanel.getBreadCrumb().isPreviousEnabled())
 	        	{
 	        		windowPanel.saveAndNavigate(b -> {
@@ -323,7 +323,7 @@ DataStatusListener, IADTabpanel, IdSpace, IFieldEditorContainer
 	        		});	        		
 	        	}
 	        });
-	        form.addEventListener(ON_SWIPE_LEFT, e -> {
+	        form.addEventListener(ON_SWIPE_LEFT, _ -> {
 	        	if (windowPanel != null && windowPanel.getBreadCrumb() != null && windowPanel.getBreadCrumb().isNextEnabled())
 	        	{
 	        		windowPanel.saveAndNavigate(b -> {
@@ -925,7 +925,7 @@ DataStatusListener, IADTabpanel, IdSpace, IFieldEditorContainer
 	        					if (ClientInfo.isMobile())
 	        					{
 	        						WEditorPopupMenu finalPopupMenu = popupMenu;
-	        						label.addEventListener(Events.ON_CLICK, evt-> finalPopupMenu.open(label, "after_start"));
+	        						label.addEventListener(Events.ON_CLICK, _-> finalPopupMenu.open(label, "after_start"));
 	        					}
 	        					else
 	        					{
@@ -1076,13 +1076,13 @@ DataStatusListener, IADTabpanel, IdSpace, IFieldEditorContainer
 
         //css animation for slide
         if (form.getSclass() != null && form.getSclass().contains(SLIDE_RIGHT_OUT_CSS)) {
-        	Executions.schedule(getDesktop(), e -> {
+        	Executions.schedule(getDesktop(), _ -> {
         		LayoutUtils.removeSclass(SLIDE_RIGHT_OUT_CSS, form);
         		LayoutUtils.addSclass(SLIDE_RIGHT_IN_CSS, form);
         		Executions.schedule(getDesktop(), e1 -> onAfterSlide(e1), new Event("onAfterSlide", form));
         	}, new Event("onAfterSlideRightOut", form));
         } else if (form.getSclass() != null && form.getSclass().contains(SLIDE_LEFT_OUT_CSS)) {
-        	Executions.schedule(getDesktop(), e -> {
+        	Executions.schedule(getDesktop(), _ -> {
         		LayoutUtils.removeSclass(SLIDE_LEFT_OUT_CSS, form);
         		LayoutUtils.addSclass(SLIDE_LEFT_IN_CSS, form);
         		Executions.schedule(getDesktop(), e1 -> onAfterSlide(e1), new Event("onAfterSlide", form));

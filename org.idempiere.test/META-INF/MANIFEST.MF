@@ -61,7 +61,6 @@ Require-Bundle: org.adempiere.base;bundle-version="13.0.0",
  org.idempiere.zk.billboard;bundle-version="13.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.idempiere.test.TestActivator
-Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: net.bytebuddy,
  net.bytebuddy.agent,
  net.bytebuddy.agent.builder,

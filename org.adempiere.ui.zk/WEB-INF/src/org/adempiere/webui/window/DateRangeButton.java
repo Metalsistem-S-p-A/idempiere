@@ -77,7 +77,7 @@ public class DateRangeButton extends ToolBarButton implements WEditor.DynamicDis
 			setImage(ThemeManager.getThemeResource(IMAGES_CONTEXT_HISTORY_PNG));
 		
 		DateRangePicker popup = new DateRangePicker(editor, editor2);
-		this.addEventListener(Events.ON_CLICK, event -> {
+		this.addEventListener(Events.ON_CLICK, _ -> {
 			Window window = null;
 			Component component = this.getParent();
 			while(component != null) {

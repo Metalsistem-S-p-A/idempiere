@@ -396,7 +396,7 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
         this.setId("findWindow_"+targetWindowNo+"_"+targetTabNo);
         LayoutUtils.addSclass("find-window", this);
         
-        addEventListener(Events.ON_CANCEL, e -> onCancel());
+        addEventListener(Events.ON_CANCEL, _ -> onCancel());
         setFireWindowCloseEventOnDetach(false);
     }
     
@@ -916,7 +916,7 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
         // Row 4: Delete (as a button)
         Button btnDelete = new Button(Msg.getMsg(Env.getCtx(), "delete"));
         btnDelete.setSclass("modern-menu-item modern-menu-delete");
-        btnDelete.addEventListener(Events.ON_CLICK, e -> {
+        btnDelete.addEventListener(Events.ON_CLICK, _ -> {
             deleteSavedQuery((isSuccess) -> {
             	if (isSuccess) {
                     Clients.showNotification(Msg.getMsg(Env.getCtx(), "DeleteSavedQuery"),
@@ -931,7 +931,7 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
         vlayout.appendChild(btnDelete);
 
         popupOptions.appendChild(vlayout);
-        btnMoreOptions.addEventListener(Events.ON_CLICK, e -> {
+        btnMoreOptions.addEventListener(Events.ON_CLICK, _ -> {
             popupOptions.open(btnMoreOptions, "after_start"); // Align bottom-left of the button
         });
     }
@@ -1258,7 +1258,7 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
 		listTable.setAutodrop(true);
 		listTable.setAutocomplete(true);		
 		listTable.setInstantSelect(false);
-		listTable.addEventListener(Events.ON_BLUR, e -> {
+		listTable.addEventListener(Events.ON_BLUR, _ -> {
         	if (listTable.getSelectedItem() == null) {
         		listTable.setSelectedIndex(0);
         	}
@@ -1274,12 +1274,12 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
         listColumn.setAutodrop(true);
         listColumn.setAutocomplete(true);		
         listColumn.setInstantSelect(false);
-        listColumn.addEventListener(Events.ON_BLUR, e -> {
+        listColumn.addEventListener(Events.ON_BLUR, _ -> {
         	if (listColumn.getSelectedItem() == null) {
         		listColumn.setValue(null);
         	}
         });     
-        listColumn.addEventListener(Events.ON_FOCUS, e -> {
+        listColumn.addEventListener(Events.ON_FOCUS, _ -> {
         	listColumn.select();
         }); 
         
@@ -1290,7 +1290,7 @@ public class FindWindow extends Window implements EventListener<Event>, ValueCha
         ZKUpdateUtil.setHflex(listOperator, "true");
         listOperator.setInstantSelect(false);
         listOperator.setAutocomplete(true);
-        listOperator.addEventListener(Events.ON_BLUR, e -> {
+        listOperator.addEventListener(Events.ON_BLUR, _ -> {
         	if (listOperator.getSelectedItem() == null) {
         		listOperator.setSelectedIndex(0);
         	}

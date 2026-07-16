@@ -65,12 +65,12 @@ public class LinkWindow extends Window {
 		appendChild(a);
 		a.setVflex("min");
 		a.setHflex("min");
-		a.addEventListener(Events.ON_CLICK, evt->detach());
+		a.addEventListener(Events.ON_CLICK, _->detach());
 		ToolBarButton btn = new ToolBarButton();
 		btn.setImage(ThemeManager.getThemeResource("images/X8.png"));
 		btn.setStyle("position: absolute; top: 2px; right: 2px");
 		appendChild(btn);
-		btn.addEventListener(Events.ON_CLICK, evt -> detach());		
+		btn.addEventListener(Events.ON_CLICK, _ -> detach());		
 		setPosition("center, center");
 		setStyle("padding: 32px;background-color: white;");
 		setBorder(true);

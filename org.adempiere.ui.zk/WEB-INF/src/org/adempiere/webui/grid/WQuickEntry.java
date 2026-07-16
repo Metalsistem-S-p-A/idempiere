@@ -171,7 +171,7 @@ public class WQuickEntry extends AbstractWQuickEntry implements EventListener<Ev
 		if (!ThemeManager.isUseCSSForWindowSize()) {
 			ZKUpdateUtil.setWindowWidthX(this, 350);
 		} else {
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSWidth(this);
 				ZKUpdateUtil.setCSSHeight(this);
 			});
@@ -186,7 +186,7 @@ public class WQuickEntry extends AbstractWQuickEntry implements EventListener<Ev
 		ZKUpdateUtil.setWidth(centerPanel, "100%");
 
 		confirmPanel.addActionListener(Events.ON_CLICK, this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		
 		if (ClientInfo.isMobile())
 		{

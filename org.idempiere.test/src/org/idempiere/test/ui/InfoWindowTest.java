@@ -116,15 +116,15 @@ public class InfoWindowTest extends AbstractTestCase {
 		when(((WebAppCtrl) webApp).getIdGenerator()).thenReturn(idGenerator);
 		webAppsMock.when(() -> WebApps.getCurrent()).thenReturn(webApp);
 
-		executionsMock.when(() -> Executions.schedule(any(Desktop.class), any(), any())).thenAnswer(invocation -> {
+		executionsMock.when(() -> Executions.schedule(any(Desktop.class), any(), any())).thenAnswer(_ -> {
 			return null;
 		});
 
-		clientsMock.when(() -> Clients.clearBusy()).thenAnswer(invocation -> {
+		clientsMock.when(() -> Clients.clearBusy()).thenAnswer(_ -> {
 			return null;
 		});
 		
-		dialogMock.when(() -> Dialog.error(anyInt(), anyString(), anyString())).thenAnswer(invocation -> {
+		dialogMock.when(() -> Dialog.error(anyInt(), anyString(), anyString())).thenAnswer(_ -> {
 			return null;
 		});
 	}

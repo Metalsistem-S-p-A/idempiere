@@ -76,7 +76,7 @@ public class WMediaOptions extends Window {
 		Button btn = new Button(Msg.getMsg(Env.getCtx(), "SaveFile"));
 		btn.setHflex("1");
 		btn.setStyle("padding: 4px 8px");
-		btn.addEventListener(Events.ON_CLICK, evt -> {
+		btn.addEventListener(Events.ON_CLICK, _ -> {
 			detach();
 			Filedownload.save(media);
 		});
@@ -89,7 +89,7 @@ public class WMediaOptions extends Window {
 			btn = new Button(Msg.getMsg(Env.getCtx(), "Preview"));
 			btn.setHflex("1");
 			btn.setStyle("padding: 4px 8px");
-			btn.addEventListener(Events.ON_CLICK, evt -> {
+			btn.addEventListener(Events.ON_CLICK, _ -> {
 				detach();
 				preview.run();
 			});
@@ -105,10 +105,10 @@ public class WMediaOptions extends Window {
 						btn = new Button(handler.getLabel());
 						btn.setHflex("1");
 						btn.setStyle("padding: 4px 8px");
-						btn.addEventListener(Events.ON_CLICK, evt -> {
+						btn.addEventListener(Events.ON_CLICK, _ -> {
 							Page page = WMediaOptions.this.getPage();
 							Clients.showBusy(this, Msg.getMsg(Env.getCtx(), "Processing"));
-							Executions.schedule(getDesktop(), e -> {
+							Executions.schedule(getDesktop(), _ -> {
 								uploadMedia(media, account, handler, page);
 								Clients.clearBusy(WMediaOptions.this);
 								WMediaOptions.this.detach();

@@ -225,7 +225,7 @@ public class LoginServlet extends HttpServlet {
 	 * Record a failed login attempt
 	 */
 	private void recordFailedAttempt(String ip) {
-		LoginAttempt attempt = loginAttempts.computeIfAbsent(ip, k -> new LoginAttempt());
+		LoginAttempt attempt = loginAttempts.computeIfAbsent(ip, _ -> new LoginAttempt());
 		attempt.failedAttempts.incrementAndGet();
 		attempt.lastAttemptTime.set(System.currentTimeMillis());
 		

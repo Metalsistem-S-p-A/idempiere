@@ -4,7 +4,6 @@ Bundle-Name: OIDC Provider
 Bundle-SymbolicName: org.idempiere.ui.sso.oidc
 Bundle-Version: 13.0.0.qualifier
 Bundle-Vendor: iDempiere.org
-Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.idempiere.ui.sso.oidc
 Import-Package: javax.servlet;version="4.0.0",
  javax.servlet.http;version="4.0.0",

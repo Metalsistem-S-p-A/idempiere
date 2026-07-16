@@ -221,9 +221,9 @@ public class WEMailDialog extends Window implements EventListener<Event>, ValueC
 		set(from, to, subject, message);
 		setAttachment(attachment);
 		setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
-		addEventListener(Events.ON_SIZE, e -> onSize());
-		addEventListener(Events.ON_MAXIMIZE, e -> onSize());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
+		addEventListener(Events.ON_SIZE, _ -> onSize());
+		addEventListener(Events.ON_MAXIMIZE, _ -> onSize());
 	}	//	commonInit
 
 

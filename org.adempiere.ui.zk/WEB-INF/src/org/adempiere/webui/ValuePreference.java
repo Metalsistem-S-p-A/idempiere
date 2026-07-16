@@ -211,7 +211,7 @@ public class ValuePreference extends Window implements EventListener<Event>
 		} else {
 			AEnv.showCenterScreen(this);
 		}
-		Executions.schedule(getDesktop(), e -> confirmPanel.getOKButton().focus(), new Event("onPostOpenValuePreferenceDialog"));
+		Executions.schedule(getDesktop(), _ -> confirmPanel.getOKButton().focus(), new Event("onPostOpenValuePreferenceDialog"));
 
 	}   //  ValuePreference
 
@@ -438,7 +438,7 @@ public class ValuePreference extends Window implements EventListener<Event>
 		confirmPanel.addActionListener(Events.ON_CLICK, this);		
 		bDelete = confirmPanel.getButton("Delete");
 		setExplanation();
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}   //  dynInit
 
 	/**

@@ -180,7 +180,7 @@ public class ExportAction implements EventListener<Event>
 			LayoutUtils.addSclass("dialog-footer", confirmPanel);
 			vb.appendChild(confirmPanel);
 			confirmPanel.addActionListener(this);
-			winExportFile.addEventListener(Events.ON_CANCEL, e -> onCancel());
+			winExportFile.addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		}
 		displayExportTabSelection();
 		panel.getComponent().getParent().appendChild(winExportFile);

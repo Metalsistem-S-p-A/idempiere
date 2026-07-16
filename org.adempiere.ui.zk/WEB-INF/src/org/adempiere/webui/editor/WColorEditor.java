@@ -114,8 +114,8 @@ public class WColorEditor extends WEditor implements ContextMenuListener
 		if (!tableEditor) {
 			getComponent().appendChild(colorbox);
 		} else {
-			getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_ATTACHED, t -> afterPageAttached());
-			getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_DETACHED, t -> afterPageDetached());
+			getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_ATTACHED, _ -> afterPageAttached());
+			getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_DETACHED, _ -> afterPageDetached());
 		}
 
 		colorbox.addEventListener("onInput", e -> {
@@ -146,8 +146,8 @@ public class WColorEditor extends WEditor implements ContextMenuListener
 		}
 		
 		//need to attach callback again as editor is reuse in grid view
-		getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_ATTACHED, t -> afterPageAttached());
-		getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_DETACHED, t -> afterPageDetached());
+		getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_ATTACHED, _ -> afterPageAttached());
+		getComponent().getTextbox().addCallback(ComponentCtrl.AFTER_PAGE_DETACHED, _ -> afterPageDetached());
 		
 		return null;
 	}
@@ -252,7 +252,7 @@ public class WColorEditor extends WEditor implements ContextMenuListener
 		if (Executions.getCurrent() != null && getComponent().getPage() != null)
 			Clients.response(new AuScript(script));
 		else if (getComponent().getDesktop() != null)
-			Executions.schedule(getComponent().getDesktop(), e -> Clients.response(new AuScript(script)), new Event("onFillTextBox"));
+			Executions.schedule(getComponent().getDesktop(), _ -> Clients.response(new AuScript(script)), new Event("onFillTextBox"));
 	}
 
 	/**

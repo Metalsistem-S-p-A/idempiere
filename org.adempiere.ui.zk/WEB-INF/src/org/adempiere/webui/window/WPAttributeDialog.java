@@ -264,7 +264,7 @@ public class WPAttributeDialog extends Window implements EventListener<Event>
 		northLayout.setOddRowSclass("even");
 		//
 		confirmPanel.addActionListener(Events.ON_CLICK, this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}	//	init
 
 	/**

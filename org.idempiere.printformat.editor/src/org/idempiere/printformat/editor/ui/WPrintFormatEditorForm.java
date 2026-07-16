@@ -161,7 +161,7 @@ public class WPrintFormatEditorForm extends Window
 		setWidth("80%");
 
 		confirmPanel.addActionListener(Events.ON_CLICK, e -> pfe.onConfirmPanelClick(e));
-		addEventListener(Events.ON_CANCEL, e -> pfe.onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> pfe.onCancel());
 
 		Borderlayout eastPaneLayout = new Borderlayout();
 

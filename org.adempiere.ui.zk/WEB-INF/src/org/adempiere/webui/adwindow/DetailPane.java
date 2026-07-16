@@ -555,7 +555,7 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 		tp.setRecordToolbar(recordToolbar);
 		tp.setADTabpanel(tabPanel);
 		if (tabPanel instanceof ADTabpanel adTabpanel) {
-			tp.addEventListener(ADTabpanel.ON_SWIPE_RIGHT, e -> {
+			tp.addEventListener(ADTabpanel.ON_SWIPE_RIGHT, _ -> {
 				RecordToolbar rtb = tp.getRecordToolbar();
 				if (rtb != null && rtb.isVisible()) {
 					if (!rtb.btnPrevious.isDisabled()) {
@@ -564,7 +564,7 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 					}
 				}
 			});
-			tp.addEventListener(ADTabpanel.ON_SWIPE_LEFT, e -> {
+			tp.addEventListener(ADTabpanel.ON_SWIPE_LEFT, _ -> {
 				RecordToolbar rtb = tp.getRecordToolbar();
 				if (rtb != null && rtb.isVisible()) {
 					if (!rtb.btnNext.isDisabled()) {
@@ -619,7 +619,7 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 	protected void onCustomize(Event e) {
 		if (getSelectedADTabpanel() instanceof ADTabpanel) {
 			ADTabpanel tabPanel = (ADTabpanel) getSelectedADTabpanel();
-			CustomizeGridViewDialog.onCustomize(tabPanel, b -> {
+			CustomizeGridViewDialog.onCustomize(tabPanel, _ -> {
 				ADWindow adwindow = ADWindow.findADWindow(DetailPane.this);
 				if (adwindow != null)
 					adwindow.getADWindowContent().focusToLastFocusEditor();
@@ -1253,7 +1253,7 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 			appendChild(tabPanel);
 			this.adTabPanel = tabPanel;
 			if (tabPanel instanceof ADTabpanel) {
-				tabPanel.addEventListener(ADTabpanel.ON_SWITCH_VIEW_EVENT, e -> {
+				tabPanel.addEventListener(ADTabpanel.ON_SWITCH_VIEW_EVENT, _ -> {
 					if (recordToolBar != null && tabPanel.isGridView()) {
 						recordToolBar.setVisible(false);
 					}
@@ -1350,7 +1350,7 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 			toolbar.appendChild(overflowButton);
 			newOverflowPopup();
 			toolbar.appendChild(overflowPopup);
-			overflowButton.addEventListener(Events.ON_CLICK, e -> {
+			overflowButton.addEventListener(Events.ON_CLICK, _ -> {
 				Long ts = (Long) overflowPopup.removeAttribute("popup.close");
 				if (ts != null) {
 					if (System.currentTimeMillis() - ts.longValue() < 500) {
@@ -1397,21 +1397,21 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 			btnFirst = createButton("First", "First", "First");
 			btnFirst.setTooltiptext(btnFirst.getTooltiptext()+"    Shift+Alt+Home");
 			appendChild(btnFirst);
-			btnFirst.addEventListener(Events.ON_CLICK, e -> {
+			btnFirst.addEventListener(Events.ON_CLICK, _ -> {
 				Event ne = new Event(DetailPane.ON_RECORD_NAVIGATE_EVENT, this, "first");
 				Events.sendEvent(this, ne);
 			});
 	        btnPrevious = createButton("Previous", "Previous", "Previous");
 	        btnPrevious.setTooltiptext(btnPrevious.getTooltiptext()+"    Shift+Alt+Left");
 	        appendChild(btnPrevious);
-	        btnPrevious.addEventListener(Events.ON_CLICK, e -> {
+	        btnPrevious.addEventListener(Events.ON_CLICK, _ -> {
 				Event ne = new Event(DetailPane.ON_RECORD_NAVIGATE_EVENT, this, "previous");
 				Events.sendEvent(this, ne);
 			});
 	        btnRecordInfo = new ToolBarButton();
 	        btnRecordInfo.setLabel("");
 	        btnRecordInfo.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Who")));
-	        btnRecordInfo.addEventListener(Events.ON_CLICK,  e -> {
+	        btnRecordInfo.addEventListener(Events.ON_CLICK,  _ -> {
 	        	if (gridTab.isNew() || gridTab.getRowCount() == 0)
 	        		return;
 	        	DataStatusEvent dse = new DataStatusEvent(gridTab, gridTab.getRowCount(), gridTab.needSave(true, true), true, false);
@@ -1427,14 +1427,14 @@ public class DetailPane extends Panel implements EventListener<Event>, IdSpace {
 	        appendChild(btnRecordInfo);
 	        btnNext = createButton("Next", "Next", "Next");
 	        btnNext.setTooltiptext(btnNext.getTooltiptext()+"    Shift+Alt+Right");
-	        btnNext.addEventListener(Events.ON_CLICK, e -> {
+	        btnNext.addEventListener(Events.ON_CLICK, _ -> {
 				Event ne = new Event(DetailPane.ON_RECORD_NAVIGATE_EVENT, this, "next");
 				Events.sendEvent(this, ne);
 			});
 	        appendChild(btnNext);
 	        btnLast = createButton("Last", "Last", "Last");
 	        btnLast.setTooltiptext(btnLast.getTooltiptext()+"    Shift+Alt+End");
-	        btnLast.addEventListener(Events.ON_CLICK, e -> {
+	        btnLast.addEventListener(Events.ON_CLICK, _ -> {
 				Event ne = new Event(DetailPane.ON_RECORD_NAVIGATE_EVENT, this, "last");
 				Events.sendEvent(this, ne);
 			});

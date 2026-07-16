@@ -98,7 +98,7 @@ public class DateRangeEditor extends Div implements ValueChangeListener {
 		this.appendChild(popupBtn);
 
 		popup = new DateRangePicker(editor, editor2);
-		popupBtn.addEventListener(Events.ON_CLICK, event -> {
+		popupBtn.addEventListener(Events.ON_CLICK, _ -> {
 			popup.setPage(popupBtn.getPage());
 			popup.open(popupBtn, "after_center");
 			LayoutUtils.autoDetachOnClose(popup);

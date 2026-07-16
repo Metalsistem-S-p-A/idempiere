@@ -97,7 +97,7 @@ public class SchedulerStateEditor extends WEditor {
         super(new Button(), gridField, rowIndex, tableEditor, editorConfiguration);
         Button btn = getComponent();
         
-        btn.addEventListener(ON_START_SCHEDULER_EVENT, evt -> {
+        btn.addEventListener(ON_START_SCHEDULER_EVENT, _ -> {
         	int id = getAD_Scheduler_ID();
 			if (id > 0) {
 				MScheduler model = new MScheduler(Env.getCtx(), id, null);
@@ -115,7 +115,7 @@ public class SchedulerStateEditor extends WEditor {
 			}
 		});
 		
-		btn.addEventListener(ON_STOP_SCHEDULER_EVENT,  evt -> {
+		btn.addEventListener(ON_STOP_SCHEDULER_EVENT,  _ -> {
 			int id = getAD_Scheduler_ID();
 			if (id > 0) {
 				MScheduler model = new MScheduler(Env.getCtx(), id, null);
@@ -133,7 +133,7 @@ public class SchedulerStateEditor extends WEditor {
 			}
 		});
 		
-		btn.addEventListener(ON_ADD_SCHEDULER_EVENT, evt -> {
+		btn.addEventListener(ON_ADD_SCHEDULER_EVENT, _ -> {
 			int id = getAD_Scheduler_ID();
 			if (id > 0) {
 				MScheduler model = new MScheduler(Env.getCtx(), id, null);

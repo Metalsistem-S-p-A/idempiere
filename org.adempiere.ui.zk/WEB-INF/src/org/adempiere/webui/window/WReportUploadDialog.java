@@ -155,7 +155,7 @@ public class WReportUploadDialog extends Window implements EventListener<Event> 
 		LayoutUtils.addSclass("dialog-footer", confirmPanel);						
 		confirmPanel.addActionListener(this);
 		
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		this.setVflex("min");
 	}
 

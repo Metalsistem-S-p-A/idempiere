@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere Processes
 Bundle-SymbolicName: org.adempiere.base.process
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Require-Bundle: org.adempiere.base;bundle-version="13.0.0"
 Export-Package: org.adempiere.process,
  org.compiere.process,
@@ -16,8 +15,10 @@ Import-Package: javax.mail;version="1.6.0",
  org.apache.commons.collections.keyvalue;version="3.2.0",
  org.osgi.framework;version="1.10.0",
  org.osgi.service.component.annotations;version="1.5.0"
-Bundle-ClassPath: .
+Bundle-ClassPath: it.idIta.modification.org.adempiere.base.process.jar,
+ .
 Automatic-Module-Name: org.adempiere.base.process
 Bundle-Vendor: iDempiere Community
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/org.adempiere.base.process.factory.BaseProcessFactoryImpl.xml
+Bundle-RequiredExecutionEnvironment: JavaSE-25

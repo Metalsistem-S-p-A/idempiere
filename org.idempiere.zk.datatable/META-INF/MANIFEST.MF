@@ -20,7 +20,6 @@ Import-Package: com.google.common.net;version="33.2.1",
 Bundle-Vendor: idempiere.org
 Fragment-Host: org.adempiere.ui.zk;bundle-version="11.0.0"
 Automatic-Module-Name: org.idempiere.ui.zk.datatable
-Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/org.idempiere.zk.datatable.DatatableReportRenderer.xml,
  OSGI-INF/org.idempiere.zk.datatable.DatatableReportViewerRenderer.xml

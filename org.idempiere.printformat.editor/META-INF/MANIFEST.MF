@@ -9,8 +9,7 @@ Import-Package: org.osgi.framework;version="1.10.0",
  org.osgi.service.component;version="1.5.0",
  org.osgi.service.component.annotations;version="1.5.1"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Require-Bundle: org.adempiere.base;bundle-version="13.0.0",
  org.adempiere.ui.zk;bundle-version="13.0.0",
  org.adempiere.plugin.utils;bundle-version="13.0.0",
@@ -25,3 +24,4 @@ Require-Bundle: org.adempiere.base;bundle-version="13.0.0",
 Export-Package: action.images
 Automatic-Module-Name: org.idempiere.printformat.editor
 Service-Component: OSGI-INF/org.idempiere.printformat.editor.action.EditorAction.xml
+Bundle-RequiredExecutionEnvironment: JavaSE-25

@@ -139,7 +139,7 @@ public class WProcessCtl extends AbstractProcessCtl {
 				para.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 				AEnv.showWindow(para);
 			}
-			Executions.schedule(para.getDesktop(), e -> para.focus(), new Event("onPostShowProcessModalDialog"));
+			Executions.schedule(para.getDesktop(), _ -> para.focus(), new Event("onPostShowProcessModalDialog"));
 		}
 	}	//	execute
 	

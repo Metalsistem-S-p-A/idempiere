@@ -249,7 +249,7 @@ public class WGadgets extends Window implements  EventListener<Event>{
 		vlayout.appendChild(panel);
 		this.appendChild(vlayout);
 		this.setBorder("normal");
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 	
 	/**

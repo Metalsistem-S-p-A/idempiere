@@ -219,7 +219,7 @@ public class ProcessInfoDialog extends Window implements EventListener<Event> {
 					if (log.getAD_Table_ID() > 0		
 							&& log.getRecord_ID() > 0) {
 						DocumentLink recordLink = new DocumentLink(sb.toString(), log.getAD_Table_ID(), log.getRecord_ID());
-						recordLink.addEventListener(Events.ON_CLICK, e -> {
+						recordLink.addEventListener(Events.ON_CLICK, _ -> {
 							if (isAutoCloseAfterZoom())
 								this.detach();
 						});
@@ -245,7 +245,7 @@ public class ProcessInfoDialog extends Window implements EventListener<Event> {
 		}
 		if(event.getTarget() == btnPrint) {
 			Clients.showBusy(Msg.getMsg(Env.getCtx(), "Processing"));
-			Executions.schedule(this.getDesktop(), e -> onPrint(), new Event("onPrint"));
+			Executions.schedule(this.getDesktop(), _ -> onPrint(), new Event("onPrint"));
 		}
 	}
 	
@@ -344,7 +344,7 @@ public class ProcessInfoDialog extends Window implements EventListener<Event> {
 				supportMask.hideMask();
 			}
 		});		
-		Executions.schedule(comp.getDesktop(), e -> dialog.btnOk.focus(), new Event("onPostShowProcessInfoDialog"));
+		Executions.schedule(comp.getDesktop(), _ -> dialog.btnOk.focus(), new Event("onPostShowProcessInfoDialog"));
 		return dialog;
 	}
 }

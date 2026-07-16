@@ -155,8 +155,8 @@ public class DPCalendar extends DashboardPanel implements EventListener<Event>, 
 		};
 		
 		if (ClientInfo.isMobile()) {
-			addCallback(AFTER_PAGE_ATTACHED, t -> afterPageAttached());
-			addEventListener(ON_MOBILE_SET_SELECTED_TAB_ECHO, evt -> calendars.invalidate());
+			addCallback(AFTER_PAGE_ATTACHED, _ -> afterPageAttached());
+			addEventListener(ON_MOBILE_SET_SELECTED_TAB_ECHO, _ -> calendars.invalidate());
 		}
 	}
 
@@ -168,7 +168,7 @@ public class DPCalendar extends DashboardPanel implements EventListener<Event>, 
 		Component p = getParent();
 		while (p != null) {
 			if (p instanceof Tabpanel) {
-				p.addEventListener(WindowContainer.ON_MOBILE_SET_SELECTED_TAB, evt -> onMobileSelected());
+				p.addEventListener(WindowContainer.ON_MOBILE_SET_SELECTED_TAB, _ -> onMobileSelected());
 				break;
 			}
 			p = p.getParent();

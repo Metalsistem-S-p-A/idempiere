@@ -871,7 +871,7 @@ public class DashboardController implements EventListener<Event> {
 						toolbar.appendChild(rowCountLabel);
 					}
 					
-					btn.addEventListener(Events.ON_CLICK, e -> {
+					btn.addEventListener(Events.ON_CLICK, _ -> {
 						ReportData refreshedData = generateReport(AD_Process_ID, dashboardContent.getAD_PrintFormat_ID(), processParameters, parentComponent, contextPath);
 						iframe.setContent(refreshedData.getContent());
 						if(refreshedData.getRowCount() >= 0)
@@ -1154,7 +1154,7 @@ public class DashboardController implements EventListener<Event> {
 				//notify panel content component
 				if (panel.getPanelchildren() != null) {
 					panel.getPanelchildren().getChildren().forEach(child -> {
-						Executions.schedule(dashboardLayout.getDesktop(), e -> Events.postEvent(child, event), new Event("onPostRestore"));
+						Executions.schedule(dashboardLayout.getDesktop(), _ -> Events.postEvent(child, event), new Event("onPostRestore"));
 					});
 				}
 	    	}

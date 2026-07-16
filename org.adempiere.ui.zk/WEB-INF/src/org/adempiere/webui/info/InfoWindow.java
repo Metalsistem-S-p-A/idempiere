@@ -373,7 +373,7 @@ public class InfoWindow extends InfoPanel implements ValueChangeListener, EventL
 				? MSysConfig.getBooleanValue(MSysConfig.ZK_INFO_MOBILE_AUTO_COLLAPSED_PARAMETER_PANEL, true, Env.getAD_Client_ID(Env.getCtx()))
 				: MSysConfig.getBooleanValue(MSysConfig.ZK_INFO_AUTO_COLLAPSED_PARAMETER_PANEL, false, Env.getAD_Client_ID(Env.getCtx()));
 
-		addEventListener(ON_QUERY_AFTER_CHANGE, e -> postQueryAfterChangeEvent());
+		addEventListener(ON_QUERY_AFTER_CHANGE, _ -> postQueryAfterChangeEvent());
 		
    		//update related info window tabs
    		contentPanel.addActionListener(new EventListener<Event>() {
@@ -621,7 +621,7 @@ public class InfoWindow extends InfoPanel implements ValueChangeListener, EventL
    				
    				// init button to show menu
    				btMenuProcess = confirmPanel.addButton("ProcessMenu", null);
-   				btMenuProcess.addEventListener(Events.ON_CLICK, e -> {
+   				btMenuProcess.addEventListener(Events.ON_CLICK, _ -> {
    					ipMenu.open(btMenuProcess, "before_start");
    				});
    			}

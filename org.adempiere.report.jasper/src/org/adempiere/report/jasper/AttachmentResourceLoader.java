@@ -102,7 +102,7 @@ public class AttachmentResourceLoader {
 		if (reportFile.exists()) {
 			String localSHA256hash = DigestOfFile.getSHA256Hash(reportFile);
 			String entrySHA256hash = null;
-            try (InputStream is = entry.getInputStream()) {
+            try (InputStream _ = entry.getInputStream()) {
                 entrySHA256hash = DigestOfFile.getSHA256Hash(entry.getInputStream());
             } catch (IOException e) {
                 throw new RuntimeException(e);

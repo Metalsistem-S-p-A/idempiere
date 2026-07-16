@@ -68,7 +68,7 @@ public class SimplePDFViewer extends Window {
 			if (getPage() != null) {
 				showMobileViewer(iframe);
 			} else {
-				addCallback(AFTER_PAGE_ATTACHED, t -> showMobileViewer(iframe));
+				addCallback(AFTER_PAGE_ATTACHED, _ -> showMobileViewer(iframe));
 			}
 		} else {
 			iframe.setContent(media);

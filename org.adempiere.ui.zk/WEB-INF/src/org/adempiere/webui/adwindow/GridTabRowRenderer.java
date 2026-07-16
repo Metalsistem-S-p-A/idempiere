@@ -610,7 +610,7 @@ public class GridTabRowRenderer implements RowRenderer<Object[]>, RowRendererExt
 				Label indicatorLabel = new Label();
 				cell.appendChild(indicatorLabel);
 				final Cell finalCell = cell;
-				indicatorLabel.addEventListener(Events.ON_CLICK, evt->Events.postEvent(Events.ON_CLICK, finalCell, indicatorLabel.getSclass()));
+				indicatorLabel.addEventListener(Events.ON_CLICK, _->Events.postEvent(Events.ON_CLICK, finalCell, indicatorLabel.getSclass()));
 			}
 			cell.setValign("middle");
 			row.appendChild(cell);

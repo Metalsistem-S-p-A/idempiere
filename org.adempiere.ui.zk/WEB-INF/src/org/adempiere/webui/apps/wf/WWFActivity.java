@@ -330,7 +330,7 @@ public class WWFActivity extends ADForm implements EventListener<Event>
     		else if (comp == bRefresh)
     		{
     			Clients.showBusy(Msg.getMsg(Env.getCtx(), "Processing"));
-    			Executions.schedule(getDesktop(), e -> {
+    			Executions.schedule(getDesktop(), _ -> {
     				loadActivities();
     				Clients.clearBusy();
     			}, new Event("onRefresh"));

@@ -67,7 +67,7 @@ public class WPAWidget extends Panel {
 		WPerformanceIndicator pi = new WPerformanceIndicator(goal, options);
 		div.appendChild(pi);
 		if (goal.getMeasure() != null) 
-			pi.addEventListener(Events.ON_CLICK, e -> new WPerformanceDetail(pi.getGoal())); //Action Listener for Drill Down
+			pi.addEventListener(Events.ON_CLICK, _ -> new WPerformanceDetail(pi.getGoal())); //Action Listener for Drill Down
 		if(isShowTitle) {
 			Div titleDiv = new Div();
 			titleDiv.setSclass("gauge-indicator-title");

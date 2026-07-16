@@ -172,7 +172,7 @@ public class WCtxHelpSuggestion extends Window implements EventListener<Event> {
 		} else {
 			setTitle(Msg.getElement(Env.getCtx(), "AD_CtxHelpSuggestion_ID"));
 		}
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 
 	@Override

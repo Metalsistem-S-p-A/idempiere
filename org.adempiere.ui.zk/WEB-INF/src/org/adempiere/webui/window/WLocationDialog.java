@@ -222,7 +222,7 @@ public class WLocationDialog extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -528,7 +528,7 @@ public class WLocationDialog extends Window implements EventListener<Event>
 		southPane.appendChild(confirmPanel);
 		
 		addEventListener("onSaveError", this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 	
 	/**

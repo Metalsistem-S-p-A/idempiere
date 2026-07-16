@@ -113,7 +113,7 @@ public final class WAccountDialog extends Window
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 				this.invalidate();
@@ -306,7 +306,7 @@ public final class WAccountDialog extends Window
 			ClientInfo.onClientInfo(this, this::onClientInfo);
 		}
 		
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}	//	init
 
 	/**

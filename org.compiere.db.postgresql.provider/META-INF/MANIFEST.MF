@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere Postgresql Provider
 Bundle-SymbolicName: org.compiere.db.postgresql.provider;singleton:=true
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Bundle-ClassPath: .
 Require-Bundle: org.adempiere.base;bundle-version="13.0.0",
  org.adempiere.install;bundle-version="13.0.0";resolution:=optional,
@@ -19,3 +18,4 @@ Automatic-Module-Name: org.compiere.db.postgresql.provider
 Bundle-Vendor: iDempiere Community
 Export-Package: org.adempiere.db.postgresql.config,
  org.compiere.dbPort
+Bundle-RequiredExecutionEnvironment: JavaSE-25

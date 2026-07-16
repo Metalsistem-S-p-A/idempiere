@@ -95,7 +95,7 @@ public class RequestWindow extends Window implements EventListener<Event> {
 			ZKUpdateUtil.setWindowWidthX(this, 400);
 			ZKUpdateUtil.setWindowHeightX(this, 550);
 		} else {
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});

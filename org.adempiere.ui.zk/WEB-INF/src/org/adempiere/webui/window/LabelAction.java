@@ -67,7 +67,7 @@ public class LabelAction {
 			window.setClosable(true);
 			window.setBorder("normal");
 			window.setStyle("position:absolute");
-			window.addCallback(Window.AFTER_PAGE_DETACHED, t -> panel.focusToLastFocusEditor());			
+			window.addCallback(Window.AFTER_PAGE_DETACHED, _ -> panel.focusToLastFocusEditor());			
 			LabelsSearchController controller = new LabelsSearchController(labelsPanel);
 			LabelsSearch globalSearch = new LabelsSearch(controller);
 			ZkCssHelper.appendStyle(globalSearch, "display: flex; flex-direction: column; margin: 8px; margin-top: 5px;");

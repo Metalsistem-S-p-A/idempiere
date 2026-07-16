@@ -84,7 +84,7 @@ public class WPAttributeInstance extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -173,7 +173,7 @@ public class WPAttributeInstance extends Window implements EventListener<Event>
 		south.setParent(mainLayout);
 		south.appendChild(confirmPanel);
 		confirmPanel.addActionListener(this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}	//	jbInit
 
 	/**	Column Layout Info	for {@link #m_table}		*/

@@ -158,7 +158,7 @@ public class WTimeZoneEditor extends WEditor implements ContextMenuListener {
 			}
 		}
 		
-		getComponent().addEventListener(Events.ON_BLUR, e -> onBlur());
+		getComponent().addEventListener(Events.ON_BLUR, _ -> onBlur());
 	}
 	
 	/**

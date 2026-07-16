@@ -115,7 +115,7 @@ public class CustomizeGridViewDialog extends Window {
 				ZKUpdateUtil.setWindowWidthX(this, 600);
 				ZKUpdateUtil.setWindowHeightX(this, 500);
 			} else {
-				addCallback(AFTER_PAGE_ATTACHED, t-> {
+				addCallback(AFTER_PAGE_ATTACHED, _-> {
 					ZKUpdateUtil.setCSSHeight(this);
 					ZKUpdateUtil.setCSSWidth(this);
 				});
@@ -125,7 +125,7 @@ public class CustomizeGridViewDialog extends Window {
 			customizePanel.createUI();
 			customizePanel.query();
 		}
-		addEventListener(Events.ON_CANCEL, e -> customizePanel.onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> customizePanel.onCancel());
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class CustomizeGridViewDialog extends Window {
 		{
 			customizeWindow.setGridPanel(gridPanel);
 		}
-		customizeWindow.addCallback(Window.AFTER_PAGE_DETACHED, t -> {
+		customizeWindow.addCallback(Window.AFTER_PAGE_DETACHED, _ -> {
 			if (callback != null)
 				callback.onCallback(customizeWindow.isSaved());
 		});

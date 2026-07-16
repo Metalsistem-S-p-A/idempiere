@@ -249,7 +249,7 @@ public class TrxTest extends AbstractTestCase {
 	
 		    // exception handling: runtime exception
 		    RuntimeException rex = assertThrows(RuntimeException.class, () ->
-		        Trx.run(name -> {
+		        Trx.run(_ -> {
 		            throw new RuntimeException("Test RuntimeException");
 		        })
 		    );
@@ -257,7 +257,7 @@ public class TrxTest extends AbstractTestCase {
 	
 		    // exception handling: checked exception wrapped in AdempiereException
 		    AdempiereException aex = assertThrows(AdempiereException.class, () ->
-		        Trx.run(name -> {
+		        Trx.run(_ -> {
 		            throw new AdempiereException("Test CheckedException");
 		        })
 		    );

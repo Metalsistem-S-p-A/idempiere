@@ -1277,7 +1277,7 @@ public class ADWindowToolbar extends ToolBar implements EventListener<Event>
 				"}");
 		addEventListener(Events.ON_AFTER_SIZE, (AfterSizeEvent evt) -> onAfterSize(evt));
 		
-		addCallback(AFTER_PAGE_ATTACHED, t -> afterPageAttached());
+		addCallback(AFTER_PAGE_ATTACHED, _ -> afterPageAttached());
 	}
 
 	/**
@@ -1287,7 +1287,7 @@ public class ADWindowToolbar extends ToolBar implements EventListener<Event>
 		Component p = getParent();
 		while (p != null) {
 			if (p instanceof Tabpanel) {
-				p.addEventListener(WindowContainer.ON_MOBILE_SET_SELECTED_TAB, evt -> this.invalidate());
+				p.addEventListener(WindowContainer.ON_MOBILE_SET_SELECTED_TAB, _ -> this.invalidate());
 				break;
 			}
 			p = p.getParent();
@@ -1433,7 +1433,7 @@ public class ADWindowToolbar extends ToolBar implements EventListener<Event>
 		appendChild(mobileOverflowButton);
 		newOverflowPopup();
 		appendChild(overflowPopup);
-		mobileOverflowButton.addEventListener(Events.ON_CLICK, e -> {
+		mobileOverflowButton.addEventListener(Events.ON_CLICK, _ -> {
 			Long ts = (Long) overflowPopup.removeAttribute(POPUP_CLOSE_TIMESTAMP_ATTR);
 			if (ts != null) {
 				if (System.currentTimeMillis() - ts.longValue() < 500) {

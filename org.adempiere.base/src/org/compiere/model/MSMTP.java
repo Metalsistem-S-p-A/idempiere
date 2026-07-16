@@ -136,7 +136,7 @@ public class MSMTP extends X_AD_SMTP implements ImmutablePOSupport {
 			s_cache.put (key, null);
 		} else {
 			final MSMTP smtp = retValue;
-			s_cache.put (key, retValue, e -> new MSMTP(Env.getCtx(), smtp));
+			s_cache.put (key, retValue, _ -> new MSMTP(Env.getCtx(), smtp));
 		}
 
 		return retValue;

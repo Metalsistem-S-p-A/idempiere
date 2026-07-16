@@ -117,7 +117,7 @@ public class WReportExportDialog extends Window implements EventListener<Event> 
 		vb.appendChild(confirmPanel);
 		LayoutUtils.addSclass("dialog-footer", confirmPanel);
 		confirmPanel.addActionListener(this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 
 	@Override

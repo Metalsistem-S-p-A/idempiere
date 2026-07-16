@@ -23,5 +23,5 @@ Bundle-Vendor: Idempiere
 Automatic-Module-Name: org.idempiere.webservices.resources
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
+Bundle-RequiredExecutionEnvironment: JavaSE-25

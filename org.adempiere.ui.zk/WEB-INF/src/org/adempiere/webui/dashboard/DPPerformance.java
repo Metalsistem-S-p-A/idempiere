@@ -51,7 +51,7 @@ public class DPPerformance extends DashboardPanel {
 		setSclass("performance-widget");
 		paPanel = new WPAPanel();
 		appendChild(paPanel);
-		paPanel.addEventListener(WPerformanceIndicator.ON_AFTER_RENDER_CHART_EVENT, e -> onPostRender());
+		paPanel.addEventListener(WPerformanceIndicator.ON_AFTER_RENDER_CHART_EVENT, _ -> onPostRender());
 		this.addEventListener(Events.ON_OPEN, (OpenEvent e) -> {
 			if (e.isOpen()) 
 				onPostRestore();

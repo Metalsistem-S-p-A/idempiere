@@ -194,7 +194,7 @@ public class ProcessModalDialog extends AbstractProcessDialog implements EventLi
 			log.log(Level.SEVERE, "", ex);
 		}
 		addEventListener(ON_OK_ECHO_EVENT, this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 	}
 
 	/**

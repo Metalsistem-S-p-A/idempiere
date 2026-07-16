@@ -116,7 +116,7 @@ public class WTextEditorDialog extends Window implements EventListener<Event>{
 			ZKUpdateUtil.setWindowHeightX(this, 450);
 			ZKUpdateUtil.setWindowWidthX(this, 800);
 		} else {
-			addCallback(AFTER_PAGE_ATTACHED, t -> {
+			addCallback(AFTER_PAGE_ATTACHED, _ -> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -200,9 +200,9 @@ public class WTextEditorDialog extends Window implements EventListener<Event>{
 		setClosable(true);
 		setSizable(true);
 		setMaximizable(true);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
-		addEventListener(Events.ON_SIZE, e -> onSize());
-		addEventListener(Events.ON_MAXIMIZE, e -> onSize());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
+		addEventListener(Events.ON_SIZE, _ -> onSize());
+		addEventListener(Events.ON_MAXIMIZE, _ -> onSize());
 	}
 
 	/**

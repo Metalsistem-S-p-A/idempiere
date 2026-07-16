@@ -102,7 +102,7 @@ public class WFieldRecordInfo extends Window implements EventListener<Event>
 		}
 		else
 		{
-			addCallback(AFTER_PAGE_ATTACHED, t-> {
+			addCallback(AFTER_PAGE_ATTACHED, _-> {
 				ZKUpdateUtil.setCSSHeight(this);
 				ZKUpdateUtil.setCSSWidth(this);
 			});
@@ -199,7 +199,7 @@ public class WFieldRecordInfo extends Window implements EventListener<Event>
 		south.appendChild(confirmPanel);
 		
 		confirmPanel.addActionListener(Events.ON_CLICK, this);
-		addEventListener(Events.ON_CANCEL, e -> onCancel());
+		addEventListener(Events.ON_CANCEL, _ -> onCancel());
 		setSclass("field-record-info-dialog");
 	}	//	init
 		

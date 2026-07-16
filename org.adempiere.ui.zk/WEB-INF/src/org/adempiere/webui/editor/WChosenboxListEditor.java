@@ -257,7 +257,7 @@ public class WChosenboxListEditor extends WEditor implements ContextMenuListener
 			getComponent().getButton().setImage(imageUrl);
 
 		//open chosenbox dropdown
-		getComponent().getButton().addEventListener(Events.ON_CLICK, e -> {
+		getComponent().getButton().addEventListener(Events.ON_CLICK, _ -> {
 			if (getComponent().isEnabled()) {
 				if (!getComponent().getChosenbox().isOpen()) {
 					getComponent().getChosenbox().setOpen(true);
@@ -764,14 +764,14 @@ public class WChosenboxListEditor extends WEditor implements ContextMenuListener
 			}
 			else
 			{
-				addCallback(AFTER_PAGE_ATTACHED, t -> {
+				addCallback(AFTER_PAGE_ATTACHED, _ -> {
 					ZKUpdateUtil.setCSSHeight(this);
 					ZKUpdateUtil.setCSSWidth(this);
 				});
 			}
 			setSclass("chosenbox-assistant-dialog");
 
-			addCallback(AFTER_PAGE_DETACHED, t -> {
+			addCallback(AFTER_PAGE_DETACHED, _ -> {
 				WChosenboxListEditor.this.getComponent().getChosenbox().focus();
 			});
 		}

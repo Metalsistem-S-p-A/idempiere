@@ -732,14 +732,14 @@ public class WChosenboxSearchEditor extends WEditor implements ContextMenuListen
 			}
 			else
 			{
-				addCallback(AFTER_PAGE_ATTACHED, t -> {
+				addCallback(AFTER_PAGE_ATTACHED, _ -> {
 					ZKUpdateUtil.setCSSHeight(this);
 					ZKUpdateUtil.setCSSWidth(this);
 				});
 			}
 			setSclass("chosenbox-assistant-dialog");
 
-			addCallback(AFTER_PAGE_DETACHED, t -> {
+			addCallback(AFTER_PAGE_DETACHED, _ -> {
 				WChosenboxSearchEditor.this.getComponent().getChosenbox().focus();
 			});
 		}

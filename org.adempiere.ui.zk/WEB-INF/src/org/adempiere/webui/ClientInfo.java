@@ -171,11 +171,11 @@ public class ClientInfo implements Serializable {
 	 */
 	public static void onClientInfo(Component component, Runnable runnable) {
 		ComponentCtrl ctrl = (ComponentCtrl) component;		
-		EventListener<Event> eventListener = evt -> runnable.run();
+		EventListener<Event> eventListener = _ -> runnable.run();
 		
 		Component root = SessionManager.getAppDesktop().getComponent().getRoot();
 		root.addEventListener(Events.ON_CLIENT_INFO, eventListener);
-		ctrl.addCallback(AFTER_PAGE_DETACHED, t -> root.removeEventListener(Events.ON_CLIENT_INFO, eventListener));
+		ctrl.addCallback(AFTER_PAGE_DETACHED, _ -> root.removeEventListener(Events.ON_CLIENT_INFO, eventListener));
 	}
 	
 	/**

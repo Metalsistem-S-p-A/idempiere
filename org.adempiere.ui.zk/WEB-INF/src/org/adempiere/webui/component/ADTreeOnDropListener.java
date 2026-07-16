@@ -197,9 +197,9 @@ public class ADTreeOnDropListener implements EventListener<Event> {
 				ADWindowContent adwindowContent = adwindow.getADWindowContent();
 				if (trx.hasChangesMadeByEventListener()) {
 					Clients.showBusy(null);
-					Executions.schedule(c.getDesktop(), e -> {
+					Executions.schedule(c.getDesktop(), _ -> {
 						adwindowContent.onRefresh();
-						Executions.schedule(c.getDesktop(), e1 -> Clients.clearBusy(), new Event("onEchangeIndicatorchoClearBusy"));
+						Executions.schedule(c.getDesktop(), _ -> Clients.clearBusy(), new Event("onEchangeIndicatorchoClearBusy"));
 					}, new Event("onPostTreeOnDrop"));
 				} else {
 					adwindowContent.focusToActivePanel();

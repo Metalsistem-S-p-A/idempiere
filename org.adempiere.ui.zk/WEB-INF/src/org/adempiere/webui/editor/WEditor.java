@@ -148,7 +148,7 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
 			//long press conflict with text selection gesture on mobile
 			if (ClientInfo.isMobile())
 			{
-				label.addEventListener(Events.ON_CLICK, evt-> popupMenu.open(label, "after_end"));
+				label.addEventListener(Events.ON_CLICK, _-> popupMenu.open(label, "after_end"));
 			}
 			else
 			{
@@ -348,7 +348,7 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
         component.addEventListener(INIT_EDIT_EVENT, this);
         component.setAttribute(IDEMPIERE_EDITOR_ATTR, this);
         
-        component.addEventListener(Events.ON_FOCUS, e -> {
+        component.addEventListener(Events.ON_FOCUS, _ -> {
         	ADWindow adwindow = ADWindow.findADWindow(component);
         	if (adwindow != null) {
         		adwindow.getADWindowContent().setLastFocusEditor(component);

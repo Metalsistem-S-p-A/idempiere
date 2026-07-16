@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere JasperReport integration
 Bundle-SymbolicName: org.adempiere.report.jasper;singleton:=true
 Bundle-Version: 13.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Import-Package: com.zaxxer.sparsebits;version="1.2.0",
  net.sourceforge.barbecue;version="1.5.0",
  org.apache.commons.codec;version="1.16.1",
@@ -28,3 +27,4 @@ Bundle-ClassPath: .
 Automatic-Module-Name: org.adempiere.report.jasper
 Bundle-Vendor: iDempiere Community
 Bundle-Activator: org.adempiere.report.jasper.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-25

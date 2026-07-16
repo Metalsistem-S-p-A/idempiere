@@ -24,9 +24,9 @@ DynamicImport-Package: org.*, com.*, javax.*
 Bundle-ClassPath: .,
  lib/hazelcast.jar
 Service-Component: OSGI-INF/*.xml
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=17))"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"
 Require-Bundle: org.eclipse.osgi;bundle-version="3.18.500",
  org.adempiere.base;bundle-version="13.0.0"
 Automatic-Module-Name: org.idempiere.hazelcast.service
 Bundle-Vendor: iDempiere Community
+Bundle-RequiredExecutionEnvironment: JavaSE-25

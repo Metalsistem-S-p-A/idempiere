@@ -130,7 +130,7 @@ public class WindowContainer extends AbstractUIPart implements EventListener<Eve
 					setSelectedTab(tab);
 			}
 		});
-        tabbox.addEventListener(ON_AFTER_TAB_CLOSE, evt -> {
+        tabbox.addEventListener(ON_AFTER_TAB_CLOSE, _ -> {
         	if (isMobile()) {
 	        	updateMobileTabState(tabbox.getSelectedTab());	        	
         	}
@@ -217,7 +217,7 @@ public class WindowContainer extends AbstractUIPart implements EventListener<Eve
         		homeButton.setImage(ThemeManager.getThemeResource("images/Home16.png"));
         	homeButton.setSclass("window-container-toolbar-btn");
         	homeButton.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Home")));
-        	homeButton.addEventListener(Events.ON_CLICK, evt -> setSelectedTab(tabbox.getTabpanel(0).getLinkedTab()));
+        	homeButton.addEventListener(Events.ON_CLICK, _ -> setSelectedTab(tabbox.getTabpanel(0).getLinkedTab()));
         	toolbar.appendChild(homeButton);
         }
         
@@ -234,7 +234,7 @@ public class WindowContainer extends AbstractUIPart implements EventListener<Eve
         	}
         	tabListBtn.setSclass("window-container-toolbar-btn tab-list");
         	tabListBtn.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "ShowAllWindow")) + "   Alt+W");
-        	tabListBtn.addEventListener(Events.ON_CLICK, evt -> showTabList());
+        	tabListBtn.addEventListener(Events.ON_CLICK, _ -> showTabList());
         	tabListBtn.setVisible(false);
         	toolbar.appendChild(tabListBtn);        	        	 
         }

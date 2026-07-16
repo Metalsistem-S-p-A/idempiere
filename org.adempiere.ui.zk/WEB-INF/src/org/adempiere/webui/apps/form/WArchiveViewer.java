@@ -646,7 +646,7 @@ public class WArchiveViewer extends Archive implements IFormController, EventLis
 			});			
 			tabViewPanel.appendChild(sidePopup);
 			sidePopup.appendChild(gridView);
-			more.addEventListener(Events.ON_CLICK, evt -> { 
+			more.addEventListener(Events.ON_CLICK, _ -> { 
 				Long ts = (Long) sidePopup.removeAttribute(ONCLOSE_TIMESTAMP_ATTR);
 				if (ts != null) {
 					if ((System.currentTimeMillis()-ts.longValue()) < 500)

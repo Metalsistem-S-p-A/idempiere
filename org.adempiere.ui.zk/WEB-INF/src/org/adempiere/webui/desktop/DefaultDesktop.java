@@ -348,7 +348,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         	eastPopup = new Popup();
         	ToolBarButton btn = new ToolBarButton();
         	btn.setIconSclass(Icon.getIconSclass(Icon.REMOVE));
-        	btn.addEventListener(Events.ON_CLICK, evt -> {
+        	btn.addEventListener(Events.ON_CLICK, _ -> {
 				eastPopup.close();
 				isQuickInfoOpen = false;
 			});
@@ -400,7 +400,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
     		layout.getDesktop().enableServerPush(true);
     	}
 
-        Executions.schedule(layout.getDesktop(), event -> {
+        Executions.schedule(layout.getDesktop(), _ -> {
         	renderHomeTab();
         	automaticOpen(Env.getCtx());
         }, new Event("onRenderHomeTab"));        
@@ -639,7 +639,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
 		{
 			ToolBarButton btn = new ToolBarButton();
         	btn.setIconSclass(Icon.getIconSclass(Icon.REMOVE));
-        	btn.addEventListener(Events.ON_CLICK, evt -> {
+        	btn.addEventListener(Events.ON_CLICK, _ -> {
         		westPopup.close();
         		westPopup.removeAttribute(POPUP_OPEN_ATTR);
         	});
@@ -864,7 +864,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
 	    	AEnv.detachInputElement(layout);
 	    	layout.setVisible(false);
 	    	//schedule async logout
-			Executions.schedule(layout.getDesktop(), e -> asyncLogout(callback), new Event("onAsyncLogout"));
+			Executions.schedule(layout.getDesktop(), _ -> asyncLogout(callback), new Event("onAsyncLogout"));
 		} else {
 			asyncLogout(callback);
 		}
@@ -890,7 +890,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
 		if (callback != null) {
 			if (layout != null && layout.getDesktop() != null 
 					&& Executions.getCurrent() != null && Executions.getCurrent().getNativeRequest() != null) {
-				Executions.schedule(layout.getDesktop(), e -> callback.onCallback(Boolean.TRUE), new Event("onAsyncLogoutCallback"));
+				Executions.schedule(layout.getDesktop(), _ -> callback.onCallback(Boolean.TRUE), new Event("onAsyncLogoutCallback"));
 			} else {
 				callback.onCallback(Boolean.TRUE);
 			}
