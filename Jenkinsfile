@@ -22,10 +22,6 @@ pipeline {
         timestamps()
     }
 
-    triggers {
-        pollSCM('0 0 * * *')
-    }
-
     stages {
         stage('Build core') {
             steps {
