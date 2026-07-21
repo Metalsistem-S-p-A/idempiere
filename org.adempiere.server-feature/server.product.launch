@@ -456,7 +456,7 @@
         <setEntry value="com.metalsistem.callouts@default:default"/>
         <setEntry value="com.metalsistem.credemsftp@default:default"/>
         <setEntry value="com.metalsistem.etlmigrazione@default:default"/>
-        <setEntry value="com.metalsistem.fragments.zk.ui@default:false"/>
+        <setEntry value="com.metalsistem.fragments.ui.zk@default:default"/>
         <setEntry value="com.metalsistem.idempiere.graphql.api@default:default"/>
         <setEntry value="com.metalsistem.jasper.fonts@default:false"/>
         <setEntry value="com.metalsistem.processes@default:default"/>

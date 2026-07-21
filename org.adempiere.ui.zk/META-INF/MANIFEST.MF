@@ -88,7 +88,8 @@ Import-Package: com.google.common.annotations;version="33.2.1",
  org.slf4j.spi;version="1.7.2",
  org.springframework.web.util
 DynamicImport-Package: action.images
-Bundle-ClassPath: idIta.modification.org.adempiere.ui.zk.jar,
+Bundle-ClassPath: com.metalsistem.fragments.ui.zk.jar,
+ idIta.modification.org.adempiere.ui.zk.jar,
  .,
  lib/ckez.jar,
  lib/daisydiff.jar,
