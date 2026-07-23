@@ -83,7 +83,7 @@ public class EnvLoader
 		Process cmd;
 		try
 		{
-			cmd = Runtime.getRuntime().exec(command);
+			cmd = Runtime.getRuntime().exec(new String[] {command});
 		}
 		catch (Exception e)
 		{

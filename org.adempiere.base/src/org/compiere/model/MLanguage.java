@@ -215,7 +215,7 @@ public class MLanguage extends X_AD_Language implements ImmutablePOSupport
 	public Locale getLocale()
 	{
 		if (m_locale == null)
-			m_locale = new Locale (getLanguageISO(), getCountryCode());
+			m_locale =  Locale.of(getLanguageISO(), getCountryCode());
 		return m_locale;
 	}	//	getLocale
 	

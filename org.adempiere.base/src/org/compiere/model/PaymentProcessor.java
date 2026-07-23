@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URL;
+import java.net.URI;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Properties;
@@ -319,8 +319,8 @@ public abstract class PaymentProcessor
 		try
 		{
 			// open secure connection
-			URL url = new URL(urlString);
-			HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+			URI url = new URI(urlString);
+			HttpsURLConnection connection = (HttpsURLConnection) url.toURL().openConnection();
 			connection.setDoOutput(true);
 			connection.setUseCaches(false);
 			connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");

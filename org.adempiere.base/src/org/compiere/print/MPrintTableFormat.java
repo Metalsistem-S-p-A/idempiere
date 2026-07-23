@@ -24,6 +24,8 @@ import java.awt.Stroke;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -716,11 +718,11 @@ public class MPrintTableFormat extends X_AD_PrintTableFormat implements Immutabl
 			URL url;
 			try 
 			{
-				url = new URL(getImageURL());
+				url = new URI(getImageURL()).toURL();
 				Toolkit tk = Toolkit.getDefaultToolkit();
 				m_image = tk.getImage(url);
 			}
-			catch (MalformedURLException e)
+			catch (MalformedURLException | URISyntaxException e)
 			{
 				log.log(Level.WARNING, "Malformed URL - "+getImageURL(), e);
 			}

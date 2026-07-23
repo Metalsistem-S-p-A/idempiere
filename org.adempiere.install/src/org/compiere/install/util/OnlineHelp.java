@@ -22,6 +22,7 @@ import java.awt.Cursor;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
@@ -250,7 +251,7 @@ class Worker extends Thread
 		URL url = null;
 		try
 		{
-			url = new URL (m_urlString);
+			url = new URI(m_urlString).toURL();
 		}
 		catch (Exception e)
 		{

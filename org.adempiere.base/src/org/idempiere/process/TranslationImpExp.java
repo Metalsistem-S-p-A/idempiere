@@ -31,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -111,7 +112,7 @@ public class TranslationImpExp extends SvrProcess {
 					String tmpZip = null;
 					FileOutputStream fos = null;
 					try {
-						URL website = new URL(p_FileName);
+						URL website = new URI(p_FileName).toURL();
 						ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 						tmpZip = FileUtil.getTempMailName(p_AD_Language, ".zip");
 						fos = new FileOutputStream(tmpZip);

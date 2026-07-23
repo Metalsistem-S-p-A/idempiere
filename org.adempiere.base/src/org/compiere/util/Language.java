@@ -128,7 +128,7 @@ public class Language implements Serializable
 			Language ll = null;
 			String language = lang.substring(0,2);
 			String country = lang.substring(3);
-			Locale locale = new Locale(language, country);
+			Locale locale = Locale.of(language, country);
 			if (DB.isConnected()) {
 				// first time connected?
 				if (!isBaseLanguageSet) {
@@ -141,7 +141,7 @@ public class Language implements Serializable
 						 ) && dblang.getLanguageISO() != null
 						   && dblang.getCountryCode() != null
 						) {
-						locale = new Locale(dblang.getLanguageISO(), dblang.getCountryCode());
+						locale = Locale.of(dblang.getLanguageISO(), dblang.getCountryCode());
 					}
 					MediaSize mediaSize = MediaSize.ISO.A4;
 					if (dblang.getAD_PrintPaper_ID() > 0) {

@@ -18,6 +18,7 @@ package org.compiere.model;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Connection;
@@ -1176,7 +1177,7 @@ public class MSequence extends X_AD_Sequence
 
 			// Now use the URL class to parse the user-specified URL into
 			// its various parts: protocol, host, port, filename.  Check the protocol
-			URL url = new URL(completeUrl);
+			URL url = new URI(completeUrl).toURL();
 			String protocol = url.getProtocol();
 			if (!protocol.equals("https") && !protocol.equals("http"))
 				throw new IllegalArgumentException("URL must use 'http:' or 'https:' protocol");

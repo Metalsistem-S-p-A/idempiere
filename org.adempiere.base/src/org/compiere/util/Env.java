@@ -1251,7 +1251,7 @@ public final class Env
 	        String[] components = value.split("\\_");
 	        String language = components.length > 0 ? components[0] : "";
 	        String country = components.length > 1 ? components[1] : "";
-	        locale = new Locale(language, country);
+	        locale = Locale.of(language, country);
         }
         else
         {

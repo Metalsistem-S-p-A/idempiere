@@ -24,6 +24,8 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Connection;
@@ -760,9 +762,9 @@ public class ConfigurationData
 		URL url = null;
 		try
 		{
-			url = new URL (protocol, server, port, file);
+			url = new URI(protocol, null, server, port, file, null, null).toURL();
 		}
-		catch (MalformedURLException ex)
+		catch (MalformedURLException | URISyntaxException ex)
 		{
 			log.severe("No URL for Protocol=" + protocol
 				+ ", Server=" + server

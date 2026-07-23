@@ -9,7 +9,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -74,8 +75,8 @@ public class WFNodeWidget extends Widget {
         		String url = mImage.getImageURL();
         		if (url != null && url.trim().length() > 0) {
         			try {
-    					image = ImageIO.read(new URL(url));
-    				} catch (IOException e) {
+    					image = ImageIO.read(new URI(url).toURL());
+    				} catch (IOException | URISyntaxException e) {
     				}
         		}
         	}

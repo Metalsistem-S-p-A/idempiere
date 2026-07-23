@@ -28,6 +28,8 @@ import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -1123,11 +1125,11 @@ public final class WebUtil
 		int responseCode = 0;
 		URL url;
 		try {
-			url = new URL(urlString);
+			url = new URI(urlString).toURL();
 			HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 			huc.setRequestMethod("HEAD");
 			responseCode = huc.getResponseCode();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			responseCode = -1;
 		} 
 		return responseCode == HttpURLConnection.HTTP_OK;

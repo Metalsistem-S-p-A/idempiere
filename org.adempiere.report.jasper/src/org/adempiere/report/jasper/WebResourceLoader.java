@@ -28,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -200,7 +201,7 @@ public class WebResourceLoader {
 	private String getRemoteMD5(String reportLocation) {
 		try {
 			String md5url = reportLocation + ".md5";
-			URL reportURL = new URL(md5url);
+			URL reportURL = new URI(md5url).toURL();
 			try (InputStream in = reportURL.openStream()) {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				byte buf[] = new byte[1024];
@@ -224,7 +225,7 @@ public class WebResourceLoader {
 	private String getRemoteSHA256(String reportLocation) {
 		try {
 			String sha256url = reportLocation + ".sha256";
-			URL reportURL = new URL(sha256url);
+			URL reportURL = new URI(sha256url).toURL();
 			try (InputStream in = reportURL.openStream()) {
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				byte buf[] = new byte[1024];
@@ -254,7 +255,7 @@ public class WebResourceLoader {
 	 */
 	private File getRemoteFile(String reportLocation, String localPath) {
 		try {
-			URL reportURL = new URL(reportLocation);
+			URL reportURL = new URI(reportLocation).toURL();
 			try (InputStream in = reportURL.openStream();) {
 
 				File downloadedFile = new File(localPath);

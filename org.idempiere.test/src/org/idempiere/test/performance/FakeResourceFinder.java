@@ -25,6 +25,8 @@
 package org.idempiere.test.performance;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.adempiere.base.IResourceFinder;
@@ -43,8 +45,8 @@ public class FakeResourceFinder implements IResourceFinder {
 	public URL getResource(String name) {
 		if (getClass().getName().equals(name)) {
 			try {
-				return new URL("file:///TestResourceFinder.txt");
-			} catch (MalformedURLException e) {
+				return new URI("file:///TestResourceFinder.txt").toURL();
+			} catch (MalformedURLException | URISyntaxException e) {
 			}
 		}
 		return null;

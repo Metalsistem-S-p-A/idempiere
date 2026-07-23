@@ -568,7 +568,6 @@ public class AboutWindow extends Window implements EventListener<Event> {
 	private void garbageCollection() {
 		Runtime runtime = Runtime.getRuntime();
 		long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
-		System.runFinalization();
 		System.gc();
         try {Thread.sleep(1000);} catch (InterruptedException e) {} // Wait 1 second for GC to complete
 		long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();

@@ -113,7 +113,7 @@ public class OSTask extends Thread
 			log.info(m_cmd);
 		try
 		{
-			m_child = Runtime.getRuntime().exec(m_cmd);
+			m_child = Runtime.getRuntime().exec(new String[] {m_cmd});
 			//
 			m_outStream = m_child.getInputStream();
 			m_errStream = m_child.getErrorStream();

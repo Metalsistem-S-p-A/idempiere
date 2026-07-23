@@ -23,6 +23,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -246,9 +248,9 @@ public class ImageElement extends PrintElement
 		//	load URL
 		try
 		{
-			url = new URL (urlString);
+			url = new URI(urlString).toURL();
 		}
-		catch (MalformedURLException ex)
+		catch (MalformedURLException | URISyntaxException ex)
 		{
 			log.log(Level.WARNING, urlString, ex);
 		}

@@ -20,6 +20,8 @@ package org.adempiere.webui.component;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -376,7 +378,7 @@ public class WListItemRenderer implements ListitemRenderer<Object>, EventListene
 						&& m_tableColumns.get(columnIndex).getColumnClass().getName().equals(MImage.class.getName()))
 				{
 					try {
-						URL url = new URL(value.toString());
+						URL url = new URI(value.toString()).toURL();
 						AImage aImage = new AImage(url);
 						Image image = new Image();
 						image.setContent(aImage);
@@ -387,6 +389,8 @@ public class WListItemRenderer implements ListitemRenderer<Object>, EventListene
 						throw new RuntimeException(e);
 					} catch (IOException e) {
 						throw new RuntimeException(e);
+					} catch (URISyntaxException e) {
+						e.printStackTrace();
 					}
 				}
 				else

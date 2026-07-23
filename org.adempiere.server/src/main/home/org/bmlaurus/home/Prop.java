@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
@@ -191,12 +193,14 @@ public final class Prop implements Serializable {
 			String ret="data:plain/text;base64,";
 			URL fis = null;
 			try {
-				fis = new URL(getProperty(TEMPLATE_PATH)+getProperty(TEMPLATE_NAME)+"/styles/template.css");
+				fis = new URI(getProperty(TEMPLATE_PATH)+getProperty(TEMPLATE_NAME)+"/styles/template.css").toURL();
 				byte data[]=read(fis);
 				ret+=Base64.getEncoder().encodeToString (data);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
 			retPath = ret;
@@ -278,7 +282,7 @@ public final class Prop implements Serializable {
 			return url;
 		URL fis = null;
 		try {
-			fis = new URL(url);
+			fis = new URI(url).toURL();
 			byte data[]=read(fis);
 			if(data==null||data.length<=0)
 				return null;
@@ -286,6 +290,8 @@ public final class Prop implements Serializable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		return ret;

@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere 2Pack Core
+Bundle-RequiredExecutionEnvironment: JavaSE-25
 Bundle-SymbolicName: org.adempiere.pipo;singleton:=true
 Bundle-Version: 13.0.0.qualifier
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version>=25))"

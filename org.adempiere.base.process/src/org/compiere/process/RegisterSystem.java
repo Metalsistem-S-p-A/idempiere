@@ -17,6 +17,7 @@
 package org.compiere.process;
 
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -131,7 +132,7 @@ public class RegisterSystem extends SvrProcess
 		if (log.isLoggable(Level.FINE)) log.fine(urlString.toString());
 		
 		//	Send it
-		URL url = new URL (urlString.toString());
+		URL url = new URI(urlString.toString()).toURL();
 		StringBuilder sb = new StringBuilder();
 		try
 		{

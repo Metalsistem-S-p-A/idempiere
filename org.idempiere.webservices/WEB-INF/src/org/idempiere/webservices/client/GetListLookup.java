@@ -13,6 +13,7 @@
  *****************************************************************************/
 package org.idempiere.webservices.client;
 
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -128,7 +129,7 @@ public class GetListLookup extends Lookup {
 			body.addDocument((Document) getListDocument.getDomNode());
 			
 			// Invoke the service endpoint
-			URL endpoint = new URL(endPoint);
+			URL endpoint = new URI(endPoint).toURL();
 			
 			SOAPMessage responseMsg = null;
 			try {

@@ -112,7 +112,7 @@ public class Task extends Thread
 		if (log.isLoggable(Level.INFO)) log.info(m_cmd);
 		try
 		{
-			m_child = Runtime.getRuntime().exec(m_cmd);
+			m_child = Runtime.getRuntime().exec(new String[] { m_cmd });
 			//
 			m_outStream = m_child.getInputStream();
 			m_errStream = m_child.getErrorStream();

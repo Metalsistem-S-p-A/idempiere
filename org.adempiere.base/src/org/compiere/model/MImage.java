@@ -23,6 +23,7 @@ import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.ResultSet;
@@ -286,7 +287,7 @@ public class MImage extends X_AD_Image implements ImmutablePOSupport
 		{
 			//	Try URL directly
 			if (str.indexOf("://") != -1)
-				url = new URL(str);
+				url = new URI(str).toURL();
 			else	//	Try Resource
 				url = getClass().getResource(str);
 			//

@@ -25,6 +25,8 @@ package org.adempiere.webui.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
@@ -101,7 +103,7 @@ public class ManageImageCache {
 		
 		URLConnection conn;
 		try {
-			URL url = new URL(imagePath);
+			URL url = new URI(imagePath).toURL();
 			conn = url.openConnection();
 		
 		    conn.setUseCaches(false);
@@ -114,7 +116,7 @@ public class ManageImageCache {
 			is.close();
 			data = os.toByteArray();
 			os.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			if (log.isLoggable(Level.CONFIG)) log.config (e.toString());
 		}
 		
@@ -250,8 +252,8 @@ public class ManageImageCache {
 		{
 			// when can't load image (due to incorrect url or disconnect or any exception), just set image as null
 			try {
-				aImage = new AImage(new URL(imagePath));
-			} catch (IOException e) {
+				aImage = new AImage(new URI(imagePath).toURL());
+			} catch (IOException | URISyntaxException e) {
 				aImage = null;
 			}
 		}

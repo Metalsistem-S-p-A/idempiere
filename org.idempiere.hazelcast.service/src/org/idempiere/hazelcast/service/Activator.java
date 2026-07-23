@@ -16,6 +16,7 @@ package org.idempiere.hazelcast.service;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.Date;
@@ -101,7 +102,7 @@ public class Activator implements BundleActivator {
 				dataArea = System.getProperty("osgi.install.area");
 				if (dataArea != null && dataArea.trim().length() > 0) {
 					try {
-						URL url = new URL(dataArea);
+						URL url = new URI(dataArea).toURL();
 						file = new File(url.getPath(), "hazelcast.xml");
 						if (!file.exists())
 							file = null;
