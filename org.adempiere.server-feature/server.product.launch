@@ -462,7 +462,6 @@
         <setEntry value="com.metalsistem.processes@default:default"/>
         <setEntry value="com.metalsistem.validators@default:default"/>
         <setEntry value="de.bxservice.relatedproduct@default:default"/>
-        <setEntry value="idIta.modification.org.adempiere.base.process@default:false"/>
         <setEntry value="idIta.modification.org.adempiere.base@default:false"/>
         <setEntry value="idIta.modification.org.adempiere.ui.zk@default:false"/>
         <setEntry value="it.cnet.impl.LIT_E_Invoice@default:default"/>
