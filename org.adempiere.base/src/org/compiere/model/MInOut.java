@@ -40,13 +40,11 @@ import org.adempiere.util.IReservationTracer;
 import org.adempiere.util.IReservationTracerFactory;
 import org.adempiere.util.ShippingUtil;
 import org.compiere.acct.Doc;
-import org.compiere.print.MPrintFormat;
 import org.compiere.print.ReportEngine;
 import org.compiere.process.DocAction;
 import org.compiere.process.DocumentEngine;
 import org.compiere.process.IDocsPostProcess;
 import org.compiere.process.ProcessInfo;
-import org.compiere.process.ServerProcessCtl;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
@@ -57,6 +55,7 @@ import org.compiere.util.TrxEventListener;
 import org.compiere.util.Util;
 import org.compiere.wf.MWFActivity;
 import org.compiere.wf.MWorkflow;
+import org.idempiere.print.ReportContentRequest;
 
 /**
  *  Shipment/Receipt Model
@@ -897,23 +896,8 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 		ReportEngine re = ReportEngine.get (getCtx(), ReportEngine.SHIPMENT, getM_InOut_ID(), get_TrxName());
 		if (re == null)
 			return null;
-		MPrintFormat format = re.getPrintFormat();
-		// We have a Jasper Print Format
-		// ==============================
-		if(format.getJasperProcess_ID() > 0)	
-		{
-			ProcessInfo pi = new ProcessInfo ("", format.getJasperProcess_ID());
-			pi.setRecord_ID ( getM_InOut_ID() );
-			pi.setIsBatch(true);
-			pi.setTransientObject(format);
-			
-			ServerProcessCtl.process(pi, null);
-			
-			return pi.getPDFReport();
-		}
-		// Standard Print Format (Non-Jasper)
-		// ==================================
-		return re.getPDF(file);
+		return Core.getReportContent(new ReportContentRequest(re, null, getDocumentInfo()),
+				"application/pdf", "pdf", file);
 	}	//	createPDF
 
 	/**
@@ -1693,11 +1677,31 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 	
 				//	Update Order Line
 				MOrderLine oLine = null;
+				BigDecimal reservationDelta = Env.ZERO;
 				if (sLine.getC_OrderLine_ID() != 0)
 				{
 					oLine = new MOrderLine (getCtx(), sLine.getC_OrderLine_ID(), get_TrxName());
 					if (log.isLoggable(Level.FINE)) log.fine("OrderLine - Reserved=" + oLine.getQtyReserved()
 						+ ", Delivered=" + oLine.getQtyDelivered());
+				}
+				if (oLine != null && oLine.getQtyOrdered().signum() >= 0)
+				{
+					BigDecimal currentReserved = oLine.getQtyReserved();
+					BigDecimal targetReserved = currentReserved.subtract(sLine.getMovementQty());
+					BigDecimal anticipatedDelivered = oLine.getQtyDelivered();
+					if (isSOTrx())
+						anticipatedDelivered = anticipatedDelivered.add(sLine.getMovementQty());
+					BigDecimal maxReserved = oLine.getQtyOrdered().subtract(anticipatedDelivered);
+
+					if (targetReserved.signum() < 0)
+						targetReserved = Env.ZERO;
+					if (maxReserved.signum() < 0)
+						maxReserved = Env.ZERO;
+
+					if (targetReserved.compareTo(maxReserved) > 0)
+						targetReserved = maxReserved;
+
+					reservationDelta = targetReserved.subtract(currentReserved);
 				}
 				boolean orderClosed = oLine != null && DocAction.STATUS_Closed.equals(oLine.getParent().getDocStatus());
 				
@@ -1733,34 +1737,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 	
 					log.fine("Material Transaction");
 					MTransaction mtrx = null;
-					
-					if (!isReversal()) 
-					{
-						if (oLine != null) 
-						{
-							BigDecimal toDelivered = oLine.getQtyOrdered()
-									.subtract(oLine.getQtyDelivered());
-							if (toDelivered.signum() < 0) // IDEMPIERE-2889
-								toDelivered = Env.ZERO;
-						}
-					} 
-					
-					BigDecimal storageReservationToUpdate = sLine.getMovementQty();
-					if (oLine != null)
-					{
-						if (!isReversal()) 
-						{
-							if (storageReservationToUpdate.compareTo(oLine.getQtyReserved()) > 0) 
-								storageReservationToUpdate = oLine.getQtyReserved();
-						}
-						else
-						{
-							BigDecimal tmp = storageReservationToUpdate.negate().add(oLine.getQtyReserved());
-							if (tmp.compareTo(oLine.getQtyOrdered()) > 0)
-								storageReservationToUpdate = oLine.getQtyOrdered().subtract(oLine.getQtyReserved());
-						}
-					}
-					
+
 					//
 					if (sLine.getM_AttributeSetInstance_ID() == 0)
 					{
@@ -1817,8 +1794,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 							}
 						}
 												
-						if (oLine!=null && mtrx!=null && !orderClosed && 
-						   ((!isReversal() && oLine.getQtyReserved().signum() > 0) || (isReversal() && oLine.getQtyOrdered().signum() > 0)))
+						if (oLine != null && mtrx != null && !orderClosed && reservationDelta.signum() != 0)
 						{					
 							if (sLine.getC_OrderLine_ID() != 0 && oLine.getM_Product_ID() > 0)
 							{
@@ -1833,7 +1809,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 								if (!MStorageReservation.add(getCtx(), oLine.getM_Warehouse_ID(),
 										oLine.getM_Product_ID(),
 										oLine.getM_AttributeSetInstance_ID(),
-										storageReservationToUpdate.negate(),
+										reservationDelta,
 										isSOTrx(),
 										get_TrxName(), tracer))
 								{
@@ -1915,8 +1891,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 							m_processMsg = "Cannot correct Inventory OnHand [" + product.getValue() + "] - " + lastError;
 							return DocAction.STATUS_Invalid;
 						}
-						if (oLine!=null && oLine.getM_Product_ID() > 0 && !orderClosed &&
-							((!isReversal() && oLine.getQtyReserved().signum() > 0) || (isReversal() && oLine.getQtyOrdered().signum() > 0)))  
+						if (oLine != null && oLine.getM_Product_ID() > 0 && !orderClosed && reservationDelta.signum() != 0)
 						{
 							IReservationTracer tracer = null;
 							IReservationTracerFactory factory = Core.getReservationTracerFactory();
@@ -1929,7 +1904,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 							if (!MStorageReservation.add(getCtx(), oLine.getM_Warehouse_ID(),
 									oLine.getM_Product_ID(),
 									oLine.getM_AttributeSetInstance_ID(),
-									storageReservationToUpdate.negate(), isSOTrx(), get_TrxName(), tracer))
+									reservationDelta, isSOTrx(), get_TrxName(), tracer))
 							{
 								m_processMsg = "Cannot correct Inventory Reserved " + (isSOTrx()? "Reserved [" :"Ordered [") + product.getValue() + "]";
 								return DocAction.STATUS_Invalid;
@@ -1963,12 +1938,7 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 				{
 					if (oLine.getQtyOrdered().signum() >= 0)
 					{
-						oLine.setQtyReserved(oLine.getQtyReserved().subtract(sLine.getMovementQty()));
-
-						if (oLine.getQtyReserved().signum() == -1)
-							oLine.setQtyReserved(Env.ZERO);
-						else if (oLine.getQtyDelivered().compareTo(oLine.getQtyOrdered()) > 0)
-							oLine.setQtyReserved(Env.ZERO);
+						oLine.setQtyReserved(oLine.getQtyReserved().add(reservationDelta));
 					}
 				}
 	
@@ -3512,16 +3482,11 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 			for (MInOutLine sLine : sLines) {
 				int AD_Org_ID = sLine.getAD_Org_ID();
 				int M_AttributeSetInstance_ID = sLine.getM_AttributeSetInstance_ID();
-
-				if (MAcctSchema.COSTINGLEVEL_Client.equals(as.getCostingLevel()))
-				{
-					AD_Org_ID = 0;
-					M_AttributeSetInstance_ID = 0;
-				}
-				else if (MAcctSchema.COSTINGLEVEL_Organization.equals(as.getCostingLevel()))
-					M_AttributeSetInstance_ID = 0;
-				else if (MAcctSchema.COSTINGLEVEL_BatchLot.equals(as.getCostingLevel()))
-					AD_Org_ID = 0;
+				MProduct product = new MProduct(sLine.getCtx(), sLine.getM_Product_ID(), sLine.get_TrxName());
+				String costingLevel = product.getCostingLevel(as);
+				MCost.CostingKey costKey = MCost.CostingKey.resolve(AD_Org_ID, M_AttributeSetInstance_ID, costingLevel);
+				AD_Org_ID = costKey.AD_Org_ID();
+				M_AttributeSetInstance_ID = costKey.M_AttributeSetInstance_ID();
 				
 				MCostElement ce = MCostElement.getMaterialCostElement(getCtx(), as.getCostingMethod(), AD_Org_ID);
 				
@@ -3573,16 +3538,11 @@ public class MInOut extends X_M_InOut implements DocAction, IDocsPostProcess
 		for (MInOutLine sLine : sLines) {
 			int AD_Org_ID = sLine.getAD_Org_ID();
 			int M_AttributeSetInstance_ID = sLine.getM_AttributeSetInstance_ID();
-
-			if (MAcctSchema.COSTINGLEVEL_Client.equals(as.getCostingLevel()))
-			{
-				AD_Org_ID = 0;
-				M_AttributeSetInstance_ID = 0;
-			}
-			else if (MAcctSchema.COSTINGLEVEL_Organization.equals(as.getCostingLevel()))
-				M_AttributeSetInstance_ID = 0;
-			else if (MAcctSchema.COSTINGLEVEL_BatchLot.equals(as.getCostingLevel()))
-				AD_Org_ID = 0;
+			MProduct product = new MProduct(sLine.getCtx(), sLine.getM_Product_ID(), sLine.get_TrxName());
+			String costingLevel = product.getCostingLevel(as);
+			MCost.CostingKey costKey = MCost.CostingKey.resolve(AD_Org_ID, M_AttributeSetInstance_ID, costingLevel);
+			AD_Org_ID = costKey.AD_Org_ID();
+			M_AttributeSetInstance_ID = costKey.M_AttributeSetInstance_ID();
 			
 			MCostElement ce = MCostElement.getMaterialCostElement(getCtx(), as.getCostingMethod(), AD_Org_ID);
 			
