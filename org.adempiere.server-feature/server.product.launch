@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">
+    <booleanAttribute key="add_console" value="false"/>
     <setAttribute key="additional_plugins">
         <setEntry value="com.fasterxml.woodstox.woodstox-core:6.7.0:default:true:default:true"/>
         <setEntry value="org.adempiere.eclipse.equinox.http.servlet:13.0.0.qualifier:default:true:default:true"/>
@@ -459,6 +460,7 @@
         <setEntry value="com.metalsistem.fragments.ui.zk@default:false"/>
         <setEntry value="com.metalsistem.idempiere.graphql.api@default:default"/>
         <setEntry value="com.metalsistem.jasper.fonts@default:false"/>
+        <setEntry value="com.metalsistem.nonbusinessday@default:default"/>
         <setEntry value="com.metalsistem.processes@default:default"/>
         <setEntry value="com.metalsistem.validators@default:default"/>
         <setEntry value="de.bxservice.relatedproduct@default:default"/>
